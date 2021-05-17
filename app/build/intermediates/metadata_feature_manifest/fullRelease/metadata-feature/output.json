@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "applicationId": "info.nightscout.androidaps",
+  "variantType": "BASE_APK",
+  "elements": [
+    {
+      "outputType": {
+        "type": "METADATA_FEATURE_MANIFEST"
+      },
+      "apkData": {
+        "type": "MAIN",
+        "splits": [],
+        "versionCode": 1500,
+        "versionName": "2.8.2-UAM-tsunami-0.6.1",
+        "outputFile": "tsunami-full-release-v0.6.1_210517.apk",
+        "fullName": "fullRelease",
+        "baseName": "full-release",
+        "dirName": ""
+      },
+      "path": "AndroidManifest.xml",
+      "properties": {}
+    }
+  ]
+}

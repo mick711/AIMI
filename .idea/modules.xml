@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/aaps_uam_tsunami061.iml" filepath="$PROJECT_DIR$/.idea/modules/aaps_uam_tsunami061.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/aaps_uam_tsunami061.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/aaps_uam_tsunami061.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/aaps_uam_tsunami061.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/aaps_uam_tsunami061.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/dana/aaps_uam_tsunami061.dana.iml" filepath="$PROJECT_DIR$/.idea/modules/dana/aaps_uam_tsunami061.dana.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/danar/aaps_uam_tsunami061.danar.iml" filepath="$PROJECT_DIR$/.idea/modules/danar/aaps_uam_tsunami061.danar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/danars/aaps_uam_tsunami061.danars.iml" filepath="$PROJECT_DIR$/.idea/modules/danars/aaps_uam_tsunami061.danars.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/medtronic/aaps_uam_tsunami061.medtronic.iml" filepath="$PROJECT_DIR$/.idea/modules/medtronic/aaps_uam_tsunami061.medtronic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/omnipod/aaps_uam_tsunami061.omnipod.iml" filepath="$PROJECT_DIR$/.idea/modules/omnipod/aaps_uam_tsunami061.omnipod.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/rileylink/aaps_uam_tsunami061.rileylink.iml" filepath="$PROJECT_DIR$/.idea/modules/rileylink/aaps_uam_tsunami061.rileylink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wear/aaps_uam_tsunami061.wear.iml" filepath="$PROJECT_DIR$/.idea/modules/wear/aaps_uam_tsunami061.wear.iml" />
+    </modules>
+  </component>
+</project>
