@@ -1384,7 +1384,7 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
                 smbLowTempReq = round( basal * durationReq/30 ,2);
                 durationReq = 30;
             }
-            rT.reason += " insulinReq " + insulinReq + ", InsulinReqPCT " + insulinReqPCT*100+"%";
+            //rT.reason += " insulinReq " + insulinReq + ", InsulinReqPCT " + insulinReqPCT*100+"%";
             //MP rT.reason for UAM mods start
              rT.reason += " insulinReq: " +insulinReq+ " U; InsulinReqPCT: " + insulinReqPCT*100 + "%; scale_ISF_ID: " + scale_ISF_ID + "; scale_min: " + scale_min + "; scale_max: " + scale_max + "; scale_50: " + profile.scale_50 + " ; HyperPredBG: "+HyperPredBG+" ; HypoPredBG: "+HypoPredBG+" ; ";
              if (scale_ISF_ID == 0) {
