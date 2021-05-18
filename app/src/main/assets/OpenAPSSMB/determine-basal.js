@@ -1385,6 +1385,19 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
                 durationReq = 30;
             }
             rT.reason += " insulinReq " + insulinReq + ", InsulinReqPCT " + insulinReqPCT*100+"%";
+            //MP rT.reason for UAM mods start
+             rT.reason += " insulinReq: " +insulinReq+ " U; InsulinReqPCT: " + insulinReqPCT*100 + "%; scale_ISF_ID: " + scale_ISF_ID + "; scale_min: " + scale_min + "; scale_max: " + scale_max + "; scale_50: " + profile.scale_50 + " ; HyperPredBG: "+HyperPredBG+" ; HypoPredBG: "+HypoPredBG+" ; ";
+             if (scale_ISF_ID == 0) {
+             rT.reason += " W1, scaling power: " + round((1 - ((sens - scale_max*scale_min*profile_sens)/(profile_sens - scale_max*scale_min*profile_sens)))*100, 1) + "%";
+             } else if (scale_ISF_ID == 1) {
+             rT.reason += " W2, scaling power: " + round((1 - ((sens - scale_max*profile_sens)/(profile_sens - scale_max*profile_sens)))*100, 1) + "%";
+             } else if (scale_ISF_ID == 3) {
+             rT.reason += " autoISF_MC: ISF from "+profile_sens+" to "+sens;
+             } else if (scale_ISF_ID == 3.1) {
+             rT.reason += " autoISF_BC: ISF from "+profile_sens+" to "+sens;
+             }
+             //MP rT.reason for UAM mods end
+
             if (microBolus >= maxBolus) {
                 rT.reason +=  "; maxBolus " + maxBolus;
             }

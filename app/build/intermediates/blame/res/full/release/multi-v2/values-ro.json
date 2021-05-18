@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/8107423s/Downloads/aaps_uam_tsunami061/app/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-ro/values-ro.xml",
+            "outputFile": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-ro/values-ro.xml",
             "map": [
                 {
                     "source": "/Users/8107423s/.gradle/caches/transforms-2/files-2.1/ae0521608d57cec0c8724eba0a57bc4c/jetified-firebase-messaging-20.3.0/res/values-ro/values.xml",

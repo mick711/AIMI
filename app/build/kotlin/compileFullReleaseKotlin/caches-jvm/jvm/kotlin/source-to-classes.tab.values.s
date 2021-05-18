@@ -1,1 +1,1 @@
-öNðGâIÝUÇU
+öNðGâI

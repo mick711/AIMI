@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/8107423s/Downloads/aaps_uam_tsunami061/app/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-w480dp-port-v13/values-w480dp-port-v13.xml",
+            "outputFile": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-w480dp-port-v13/values-w480dp-port-v13.xml",
             "map": [
                 {
                     "source": "/Users/8107423s/.gradle/caches/transforms-2/files-2.1/698784ac83f8ee4789848ea5ecf2bea3/material-1.2.1/res/values-w480dp-port-v13/values-w480dp-port-v13.xml",

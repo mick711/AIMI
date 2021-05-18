@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/8107423s/Downloads/aaps_uam_tsunami061/wear/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-uz/values-uz.xml",
+            "outputFile": "/Users/8107423s/Downloads/aimi-tsunami/wear/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-uz/values-uz.xml",
             "map": [
                 {
                     "source": "/Users/8107423s/.gradle/caches/transforms-2/files-2.1/493c05f90ad2a019ffcdc96c337a8d10/wear-1.1.0/res/values-uz/values-uz.xml",

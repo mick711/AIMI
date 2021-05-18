@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/8107423s/Downloads/aaps_uam_tsunami061/app/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-lt/values-lt.xml",
+            "outputFile": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-lt/values-lt.xml",
             "map": [
                 {
                     "source": "/Users/8107423s/.gradle/caches/transforms-2/files-2.1/3561dc70e849b312d1b56d0217e3bf1d/biometric-1.0.1/res/values-lt/values-lt.xml",

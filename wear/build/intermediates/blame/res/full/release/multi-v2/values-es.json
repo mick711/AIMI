@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/8107423s/Downloads/aaps_uam_tsunami061/wear/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-es/values-es.xml",
+            "outputFile": "/Users/8107423s/Downloads/aimi-tsunami/wear/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-es/values-es.xml",
             "map": [
                 {
                     "source": "/Users/8107423s/.gradle/caches/transforms-2/files-2.1/0fafacaf852c6002b49d5c11ade1d98d/jetified-play-services-base-17.0.0/res/values-es/values.xml",

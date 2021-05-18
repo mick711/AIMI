@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/8107423s/Downloads/aaps_uam_tsunami061/app/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-v23/values-v23.xml",
+            "outputFile": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
                     "source": "/Users/8107423s/.gradle/caches/transforms-2/files-2.1/f506e13646c54cbb26931b480bda7737/work-runtime-2.4.0/res/values-v23/values-v23.xml",

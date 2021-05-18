@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/8107423s/Downloads/aaps_uam_tsunami061/app/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-sw360dp-v13/values-sw360dp-v13.xml",
+            "outputFile": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-sw360dp-v13/values-sw360dp-v13.xml",
             "map": [
                 {
                     "source": "/Users/8107423s/.gradle/caches/transforms-2/files-2.1/f9ce495c7baa3763c689e3abd70f7a2d/preference-1.1.1/res/values-sw360dp-v13/values-sw360dp-v13.xml",

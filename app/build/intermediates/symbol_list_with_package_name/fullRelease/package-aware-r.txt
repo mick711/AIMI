@@ -5023,6 +5023,7 @@ string dia_valuemustbedetermined
 string dia_whatmeansdia
 string diawarning
 string different_password_used
+string disable_Libre_smb_restrictions
 string disable_tbr_over_notification
 string disable_vibration
 string disable_vibration_auto

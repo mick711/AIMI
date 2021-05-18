@@ -1,25 +1,8 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/8107423s/Downloads/aaps_uam_tsunami061/wear/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-zh-rCN/values-zh-rCN.xml",
+            "outputFile": "/Users/8107423s/Downloads/aimi-tsunami/wear/build/intermediates/incremental/mergeFullReleaseResources/merged.dir/values-zh-rCN/values-zh-rCN.xml",
             "map": [
-                {
-                    "source": "/Users/8107423s/Downloads/aaps_uam_tsunami061/wear/src/main/res/values-zh-rCN/strings.xml",
-                    "from": {
-                        "startLines": "3,4,2",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "105,167,55",
-                        "endColumns": "61,65,49",
-                        "endOffsets": "162,228,100"
-                    },
-                    "to": {
-                        "startLines": "99,100,101",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "7727,7789,7855",
-                        "endColumns": "61,65,49",
-                        "endOffsets": "7784,7850,7900"
-                    }
-                },
                 {
                     "source": "/Users/8107423s/.gradle/caches/transforms-2/files-2.1/493c05f90ad2a019ffcdc96c337a8d10/wear-1.1.0/res/values-zh-rCN/values-zh-rCN.xml",
                     "from": {
@@ -86,6 +69,23 @@
                         "startOffsets": "5276,5379,5540,5657,5761,5925,6043,6175,6454,6621,6724,6885,7002,7165,7303,7389,7476",
                         "endColumns": "102,160,116,103,163,117,131,120,166,102,160,116,162,137,85,86,102",
                         "endOffsets": "5374,5535,5652,5756,5920,6038,6170,6291,6616,6719,6880,6997,7160,7298,7384,7471,7574"
+                    }
+                },
+                {
+                    "source": "/Users/8107423s/Downloads/aimi-tsunami/wear/src/main/res/values-zh-rCN/strings.xml",
+                    "from": {
+                        "startLines": "3,4,2",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "105,167,55",
+                        "endColumns": "61,65,49",
+                        "endOffsets": "162,228,100"
+                    },
+                    "to": {
+                        "startLines": "99,100,101",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "7727,7789,7855",
+                        "endColumns": "61,65,49",
+                        "endOffsets": "7784,7850,7900"
                     }
                 },
                 {
