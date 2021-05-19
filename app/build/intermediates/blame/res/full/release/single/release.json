@@ -4,16 +4,16 @@
         "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/drawable/ic_quickwizard.xml"
     },
     {
-        "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/drawable_ic_loop_lgs.xml.flat",
-        "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/drawable/ic_loop_lgs.xml"
+        "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/layout_activity_preferences.xml.flat",
+        "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/layout/activity_preferences.xml"
     },
     {
         "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/xml_pref_alerts.xml.flat",
         "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/xml/pref_alerts.xml"
     },
     {
-        "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/layout_activity_preferences.xml.flat",
-        "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/layout/activity_preferences.xml"
+        "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/drawable_ic_loop_lgs.xml.flat",
+        "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/drawable/ic_loop_lgs.xml"
     },
     {
         "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/xml_pref_smscommunicator.xml.flat",
@@ -24,12 +24,12 @@
         "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/drawable/ic_maintenance.xml"
     },
     {
-        "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/drawable_ic_local_profile.xml.flat",
-        "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/drawable/ic_local_profile.xml"
-    },
-    {
         "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/layout_dialog_profileswitch.xml.flat",
         "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/layout/dialog_profileswitch.xml"
+    },
+    {
+        "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/drawable_ic_local_profile.xml.flat",
+        "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/drawable/ic_local_profile.xml"
     },
     {
         "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/drawable_ic_pause_circle_outline_24dp.xml.flat",
@@ -92,12 +92,12 @@
         "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/drawable/ic_loop_open.xml"
     },
     {
-        "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/layout_overview_editquickwizard_dialog.xml.flat",
-        "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/layout/overview_editquickwizard_dialog.xml"
-    },
-    {
         "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/layout_overview_quickwizardlist_activity.xml.flat",
         "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/layout/overview_quickwizardlist_activity.xml"
+    },
+    {
+        "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/layout_overview_editquickwizard_dialog.xml.flat",
+        "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/layout/overview_editquickwizard_dialog.xml"
     },
     {
         "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/layout_actions_fragment.xml.flat",
@@ -112,12 +112,12 @@
         "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/mipmap-mdpi/ic_pumpcontrol.png"
     },
     {
-        "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/mipmap-xxxhdpi_ic_yellowowl.png.flat",
-        "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/mipmap-xxxhdpi/ic_yellowowl.png"
-    },
-    {
         "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/layout_dialog_uam.xml.flat",
         "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/layout/dialog_uam.xml"
+    },
+    {
+        "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/mipmap-xxxhdpi_ic_yellowowl.png.flat",
+        "source": "/Users/8107423s/Downloads/aimi-tsunami/app/src/main/res/mipmap-xxxhdpi/ic_yellowowl.png"
     },
     {
         "merged": "/Users/8107423s/Downloads/aimi-tsunami/app/build/intermediates/res/merged/full/release/layout_configbuilder_single_category.xml.flat",

@@ -845,14 +845,14 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
             // set minPredBGs starting when currently-dosed insulin activity will peak
             // look ahead 60m (regardless of insulin type) so as to be less aggressive on slower insulins
             var insulinPeakTime = 90;
-            if (HyperPredBGTest > 1000 && now > 11){
+            if (HyperPredBGTest > 1000 && HyperPredBGTest < 1200 && now > 11){
             var insulinPeakTime = 35;
             console.log("insulinPeakTime because BG rising : "+insulinPeakTime);
             }else if (HyperPredBGTest > 1200){
             var insulinPeakTime = 25;
             console.log("insulinPeakTime because BG rising more than expected : "+insulinPeakTime);
             }else if (HyperPredBGTest < 1000){
-            var insulinPeakTime = 90;
+            var insulinPeakTime = 100;
             console.log("insulinPeakTime because HyperPredBGTest < 1000 : "+insulinPeakTime);
             }
             // add 30m to allow for insulin delivery (SMBs or temps)
