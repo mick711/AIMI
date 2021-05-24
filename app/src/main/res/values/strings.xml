@@ -878,8 +878,8 @@
     <string name="UAM_PBolus1_title">UAM prebolus [U]</string>
     <string name="UAM_PBolus1_summary">Automatic prebolus if setting a TT of less than 90 mg/dl with a duration between 60 and 120 minutes.</string>
         <string name="key_UAM_PBolus2" translatable="false">UAM_PBolus2</string>
-        <string name="UAM_PBolus2_title">UAM PreBolus Long meal</string>
-        <string name="UAM_PBolus2_summary">This bolus will run when TT duration is greater than 120 minutes for a TT lesser than 90 value </string>
+        <string name="UAM_PBolus2_title">Insulin Boost</string>
+        <string name="UAM_PBolus2_summary">This bolus will be send if CSF is lesser than 6 with iob lesser than (0.2 * maxiob), or 50% (if ISF2 = 2) of the value if CSF is between 6 and 10 with IOBPRED bigger than 80 </string>
     <string name="pump_stopped">Pump stopped</string>
     <string name="pump_started">Pump started</string>
     <string name="pump_paused">Pump paused</string>
@@ -1466,10 +1466,13 @@
     <string name="w2_iob_threshold_summary">Minimum percentage of maxIOB above which W2 assist is enabled. Below this threshold IOB, W2 assist will be disabled. Example: If this value is 10 and maxIOB is 8, your current IOB must be at least (8 * 10/100 =) 0.8 U for W2 assist to be active. This parameter is a safety feature assuming that postprandial glucose spikes (e.g. due to fat) occur before all insulin from the last meal decayed. If you set this value to 0, W2 assist will be decoupled from current IOB. Only do this if you are confident your sensor is not noisy, you enabled data smoothing and your scaling parameters and profile allow for safe use of W2 assist.</string>
     <string name="w2_iob_threshold_title">W2 IOB threshold [%]</string>
     <string name="key_UAM_ISF2" translatable="false">UAM_ISF2</string>
-    <string name="UAM_ISF2_title">Reduce ISF phase 2</string>
-    <string name="UAM_ISF2_summary">ISF will be divide if iob_scale is true and delta lesser than 8, out of TT time</string>
-    <string name="key_UAM_ISF1" translatable="false">UAM_ISF1</string>
+    <string name="UAM_ISF2_title">ISF Modifier</string>
+    <string name="UAM_ISF2_summary">ISF will be divide by this value if csf is lesser than 10, or isf will be up if hypopredbg is lesser than 100 by isf + (hypopredbg/UAM_ISF2)</string>
+    <!--<string name="key_UAM_ISF1" translatable="false">UAM_ISF1</string>
     <string name="UAM_ISF1_title">Reduce ISF phase 1</string>
-    <string name="UAM_ISF1_summary">ISF will be divide if iob_scale value is true and delta greater than 8, or during a TT greater than 29 minutes</string>
+    <string name="UAM_ISF1_summary">ISF will be divide if iob_scale value is true and delta greater than 8, or during a TT greater than 29 minutes</string>-->
     <string name="disable_Libre_smb_restrictions">Filtering active for every sensor, Go SMB!</string>
+    //<string name="key_UAM_hyperBG" translatable="false">Value of HyperPredBG to send a bolus</string>
+    //<string name="UAM_hyperBG_summary">Value of HyperPredBG to send a bolus value define in UAM Automated Bolus</string>
+    //<string name="UAM_hyperBG_title">Value of HyperPredBG to send a bolus</string>
 </resources>

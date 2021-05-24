@@ -4401,8 +4401,6 @@ string Mealfactor_end_summary
 string Mealfactor_end_title
 string Mealfactor_start_summary
 string Mealfactor_start_title
-string UAM_ISF1_summary
-string UAM_ISF1_title
 string UAM_ISF2_summary
 string UAM_ISF2_title
 string UAM_InsulinReq_summary
@@ -4415,6 +4413,8 @@ string UAM_UAM_boluscap_title
 string UAM_boluscap_summary
 string UAM_eventualBG_summary
 string UAM_eventualBG_title
+string UAM_hyperBG_summary
+string UAM_hyperBG_title
 string UAM_increment_button_message
 string W2_modifier_summary
 string W2_modifier_title
@@ -5376,7 +5376,6 @@ string key_Mealfactor_start
 string key_ObjectivesbgIsAvailableInNS
 string key_ObjectivesmanualEnacts
 string key_ObjectivespumpStatusIsAvailableInNS
-string key_UAM_ISF1
 string key_UAM_ISF2
 string key_UAM_InsulinReq
 string key_UAM_PBolus1
@@ -5386,6 +5385,7 @@ string key_UAM_button_increment_1
 string key_UAM_button_increment_2
 string key_UAM_button_increment_3
 string key_UAM_eventualBG
+string key_UAM_hyperBG
 string key_W2_modifier
 string key_absorption_cutoff
 string key_absorption_maxtime

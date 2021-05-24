@@ -13,7 +13,7 @@ public final class Config implements info.nightscout.androidaps.interfaces.Confi
     @org.jetbrains.annotations.NotNull()
     private final java.lang.String FLAVOR = "full";
     @org.jetbrains.annotations.NotNull()
-    private final java.lang.String VERSION_NAME = "2.8.2-UAM-tsunami-0.6.1";
+    private final java.lang.String VERSION_NAME = "2.8.2-AIMI-tsunami-0.6.1";
     @org.jetbrains.annotations.NotNull()
     private final java.lang.String currentDeviceModelString = null;
     

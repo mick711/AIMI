@@ -1343,12 +1343,12 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
                  insulinReqPCT = profile.UAM_PBolus2;
                  maxBolusTT = insulinReq;
                  console.log ("CSF : "+csf+" <= 6 send UAM Automated Bolus : "+profile.UAM_PBolus2+" U ; ");
-                 }else if (HyperPredBG > profile.UAM_hyperBG && glucose_status.delta >= 18 && iob_data.iob < (max_iob*0.6) && iob_data.iob >= (0.2*max_iob) ){
+                 }/*else if (HyperPredBG > profile.UAM_hyperBG && glucose_status.delta >= 18 && iob_data.iob < (max_iob*0.6) && iob_data.iob >= (0.2*max_iob) ){
                  insulinReq = (((bg - target_bg)/sens)*profile.UAM_ISF1);
                  insulinReqPCT = profile.UAM_PBolus2;
                  maxBolusTT = profile.UAM_PBolus1;
                  console.log ("CSF : "+csf+" <= 6 send Bolus = (((bg - target_bg)/sens)*profile.UAM_ISF1) : "+insulinReq+" U ; ");
-                 }else{
+                 }*/else{
                  console.log ("CSF : "+csf+" <= 6 but no action required");
                  }
              }else if (csf <= 10 && csf >= 6 && now >= MealTimeStart && now <= MealTimeEnd && iob_data < (max_iob * 0.2) && IOBpredBG >= 80){

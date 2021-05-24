@@ -69,3 +69,26 @@ W2 functionality
 Other UAM settings
 - UAM prebolus: Automatic prebolus delivered upon starting a TT below 90 mg/dl and a minimum duration of 60 min.
 - UAM bolus cap: SMBs triggered by W1 and W2 assists wil be limited by the quantity stated here. Basal minutes are NOT used by W1 and W2!
+
+MT : AIMI add
+in this version, i add AIMI code : use it with button TT (in all my test i used medium meal)
+You can try for a small meal without TT like a light breakfast or a snack
+-target management
+-csf = (isf / IC) will have an impact on the isf in some condition and on the smb boost
+-UAM_PBolus2 is the BOOST insulin variable, will be use when 6<csf<10 & IOBpredBG > 80 => in this case SMB = UAM_Pbolus2/ISF2. if CSF < 6 & IOB < 20% IOBMAX, SMB = UAM_PBolus2
+-ISF Modifier will be use if CSF < 10 => ISF / UAM_ISF2 or if hypopredbg < 100 ISF = ISF + (hypobredBG/UAM_ISF2)
+-an other code is in test, mean comment for now who will manage it without TT during the meal. I'm steal working on the good condition to let him play.
+
+my settins :
+-insulinReq : 75%
+-EventualBG : 160
+-scale min 70%
+-scale_50 : 2
+-scale_max : 20 %
+-W2 modifier of scale_50 : 1.7
+-W2 IOB threshold : 20%
+-UAM PBolus : 2.5
+-BOOST Insulin : 1
+-ISF Modifier : 2
+
+
