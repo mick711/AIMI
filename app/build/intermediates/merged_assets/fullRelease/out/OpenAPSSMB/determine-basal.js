@@ -1365,7 +1365,7 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
             // calculate a long enough zero temp to eventually correct back up to target
             var smbTarget = target_bg;
             worstCaseInsulinReq = (smbTarget - (naive_eventualBG + minIOBPredBG)/2 ) / sens;
-            durationReq = round(60*worstCaseInsulinReq / profile.current_basal);
+            durationReq = round(30*worstCaseInsulinReq / profile.current_basal);
 
             // if insulinReq > 0 but not enough for a microBolus, don't set an SMB zero temp
             if (insulinReq > 0 && microBolus < profile.bolus_increment) {
