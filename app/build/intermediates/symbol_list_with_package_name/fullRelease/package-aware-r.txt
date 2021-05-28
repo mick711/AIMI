@@ -4401,6 +4401,8 @@ string Mealfactor_end_summary
 string Mealfactor_end_title
 string Mealfactor_start_summary
 string Mealfactor_start_title
+string UAM_ISF1_summary
+string UAM_ISF1_title
 string UAM_ISF2_summary
 string UAM_ISF2_title
 string UAM_InsulinReq_summary
@@ -5376,6 +5378,7 @@ string key_Mealfactor_start
 string key_ObjectivesbgIsAvailableInNS
 string key_ObjectivesmanualEnacts
 string key_ObjectivespumpStatusIsAvailableInNS
+string key_UAM_ISF1
 string key_UAM_ISF2
 string key_UAM_InsulinReq
 string key_UAM_PBolus1

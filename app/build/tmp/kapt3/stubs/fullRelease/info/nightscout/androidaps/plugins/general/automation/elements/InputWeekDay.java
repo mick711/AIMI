@@ -51,7 +51,7 @@ public final class InputWeekDay extends info.nightscout.androidaps.plugins.gener
         /*public static final*/ SATURDAY /* = new SATURDAY() */,
         /*public static final*/ SUNDAY /* = new SUNDAY() */;
         private static final int[] calendarInts = {2, 3, 4, 5, 6, 7, 1};
-        private static final int[] shortNames = {2131888804, 2131888808, 2131888809, 2131888807, 2131888803, 2131888805, 2131888806};
+        private static final int[] shortNames = {2131888807, 2131888811, 2131888812, 2131888810, 2131888806, 2131888808, 2131888809};
         @org.jetbrains.annotations.NotNull()
         public static final info.nightscout.androidaps.plugins.general.automation.elements.InputWeekDay.DayOfWeek.Companion Companion = null;
         

@@ -1468,9 +1468,9 @@
     <string name="key_UAM_ISF2" translatable="false">UAM_ISF2</string>
     <string name="UAM_ISF2_title">ISF Modifier</string>
     <string name="UAM_ISF2_summary">ISF will be divide by this value if csf is lesser than 10, or isf will be up if hypopredbg is lesser than 100 by isf + (hypopredbg/UAM_ISF2)</string>
-    <!--<string name="key_UAM_ISF1" translatable="false">UAM_ISF1</string>
+    <string name="key_UAM_ISF1" translatable="false">UAM_ISF1</string>
     <string name="UAM_ISF1_title">Reduce ISF phase 1</string>
-    <string name="UAM_ISF1_summary">ISF will be divide if iob_scale value is true and delta greater than 8, or during a TT greater than 29 minutes</string>-->
+    <string name="UAM_ISF1_summary">ISF will be divide if iob_scale value is true and delta greater than 8, or during a TT greater than 29 minutes</string>
     <string name="disable_Libre_smb_restrictions">Filtering active for every sensor, Go SMB!</string>
     //<string name="key_UAM_hyperBG" translatable="false">Value of HyperPredBG to send a bolus</string>
     //<string name="UAM_hyperBG_summary">Value of HyperPredBG to send a bolus value define in UAM Automated Bolus</string>
