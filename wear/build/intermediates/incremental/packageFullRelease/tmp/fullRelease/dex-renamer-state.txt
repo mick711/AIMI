@@ -1,4 +1,0 @@
-#Fri May 28 21:20:01 CEST 2021
-base.0=/Users/8107423s/Downloads/aimi-tsunami/wear/build/intermediates/dex/fullRelease/mergeDexFullRelease/classes.dex
-path.0=classes.dex
-renamed.0=classes.dex
