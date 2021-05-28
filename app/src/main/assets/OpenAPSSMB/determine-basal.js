@@ -384,7 +384,7 @@ var scale_max = profile.scale_max/100;
                     console.log("Scale_50 adjusted from "+profile.scale_50+" to "+round ((profile.scale_50 * profile.W2_modifier)/(glucose_status.bg_supersmooth_now/target_bg),2)+"; scale factor: ("+target_bg+" * "+profile.W2_modifier+")/"+glucose_status.bg_supersmooth_now+" = "+round(profile.W2_modifier/(glucose_status.bg_supersmooth_now/target_bg), 2)+";");
                 }
             } else {
-                if ( glucose_status.delta > 8) {
+                if (glucose_status.delta > 8) {
                     sens = profile.sens - (((profile.sens - (profile.sens * scale_max)) * glucose_status.delta) / ((profile.scale_50/(bg/target_bg)) + glucose_status.delta));
                     console.log("Scale_50 adjusted from "+profile.scale_50+" to "+round (profile.scale_50/(bg/target_bg), 2)+"; scale factor: "+bg+"/"+target_bg+" = "+round((bg/target_bg), 2)+";");
                 } else {
@@ -484,9 +484,9 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
        }
        else if (!profile.temptargetSet && HyperPredBG >= profile.UAM_eventualBG && iob_data.iob >= iob_scale && profile.resistance_lowers_target){
        var hyper_target = round((target_bg - 60)/profile.autosens_max)+60;// if target = 90 then hyper_target = 81 with autosens_min = 0.7
-       if (glucose_status.delta > 0 && glucose_status.delta <= 5){
+       if (glucose_status.delta >0 && glucose_status.delta <= 5){
        hyper_target = hyper_target + glucose_status.delta;
-       }else if (glucose_status.delta >= 10 && glucose_status.delta >= 10) {
+       }else if (glucose_status.delta >= 10) {
        hyper_target = hyper_target - glucose_status.delta;
        }
        hyper_target = Math.max (75,hyper_target);
@@ -845,14 +845,14 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
             // set minPredBGs starting when currently-dosed insulin activity will peak
             // look ahead 60m (regardless of insulin type) so as to be less aggressive on slower insulins
             var insulinPeakTime = 90;
-            if (HyperPredBGTest > 1000 && HyperPredBGTest < 1200 && now > 11){
+            if (HyperPredBGTest > 1000 && now > 11){
             var insulinPeakTime = 35;
             console.log("insulinPeakTime because BG rising : "+insulinPeakTime);
             }else if (HyperPredBGTest > 1200){
             var insulinPeakTime = 25;
             console.log("insulinPeakTime because BG rising more than expected : "+insulinPeakTime);
             }else if (HyperPredBGTest < 1000){
-            var insulinPeakTime = 100;
+            var insulinPeakTime = 90;
             console.log("insulinPeakTime because HyperPredBGTest < 1000 : "+insulinPeakTime);
             }
             // add 30m to allow for insulin delivery (SMBs or temps)
@@ -1338,27 +1338,25 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
             var maxBolusTT = maxBolus;
 
             if (csf <=6 && bg >= 100 && now >= MealTimeStart && now <= MealTimeEnd && IOBpredBG >= 80){
-                 if (HyperPredBG > profile.UAM_eventualBG && glucose_status.delta_supersmooth > 8 && glucose_status.delta > 8 && glucose_status.delta_supersmooth <15 && glucose_status.delta < 15 && iob_data.iob < (0.2*max_iob)){
+                 if (HyperPredBG > profile.UAM_eventualBG && glucose_status.delta > 10 && glucose_status.delta <15 && iob_data.iob < (0.2*max_iob)){
                  insulinReq = profile.UAM_PBolus2;
                  insulinReqPCT = profile.UAM_PBolus2;
                  maxBolusTT = insulinReq;
                  console.log ("CSF : "+csf+" <= 6 send UAM Automated Bolus : "+profile.UAM_PBolus2+" U ; ");
-                 }else if (HyperPredBG > profile.UAM_hyperBG && glucose_status.delta_supersmooth >= 18 && glucose_status.delta >= 18 && iob_data.iob < (max_iob*0.4) && iob_data.iob >= (0.2*max_iob) ){
+                 }else if (HyperPredBG > profile.UAM_hyperBG && glucose_status.delta >= 18 && iob_data.iob < (max_iob*0.5) && iob_data.iob >= (0.2*max_iob) ){
                  insulinReq = (((bg - target_bg)/sens)*profile.UAM_ISF1);
                  insulinReqPCT = profile.UAM_PBolus2;
                  maxBolusTT = profile.UAM_PBolus1;
                  console.log ("CSF : "+csf+" <= 6 send Bolus = (((bg - target_bg)/sens)*profile.UAM_ISF1) : "+insulinReq+" U ; ");
                  }else{
-                 insulinReqPCT = round(Math.Min(1.0,profile.UAM_InsulinReq/100 + csf/10),2);
                  console.log ("CSF : "+csf+" <= 6 but no action required");
-                 console.log ("InsulinReqPCT change for : "+insulinReqPCT);
                  }
              }else if (csf <= 10 && csf >= 6 && now >= MealTimeStart && now <= MealTimeEnd && iob_data < (max_iob * 0.2) && IOBpredBG >= 80){
-                 if (glucose_status.delta_supersmooth >= 4 && glucose_status.delta >= 4){
+                 if (iob_data.iob < 1.5 && glucose_status.delta >= 4){
                  insulinReq = profile.UAM_PBolus2 / profile.UAM_ISF2 ;
                  insulinReqPCT = pprofile.UAM_PBolus2;
                  maxBolusTT = insulinReq;
-                 console.log ("CSF : "+csf+" <= 10 send Bolus = (profile.UAM_PBolus2 / profile.UAM_ISF2) : "+insulinReq+" U ; ");
+                 console.log ("CSF : "+csf+" <= 6 send Bolus = (profile.UAM_PBolus2 / profile.UAM_ISF2) : "+insulinReq+" U ; ");
                  }else{
                  console.log ("CSF : "+csf+" <= 10 but no action required");
                  }
@@ -1386,20 +1384,7 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
                 smbLowTempReq = round( basal * durationReq/30 ,2);
                 durationReq = 30;
             }
-            //rT.reason += " insulinReq " + insulinReq + ", InsulinReqPCT " + insulinReqPCT*100+"%";
-            //MP rT.reason for UAM mods start
-             rT.reason += " insulinReq: " +insulinReq+ " U; InsulinReqPCT: " + insulinReqPCT*100 + "%; scale_ISF_ID: " + scale_ISF_ID + "; scale_min: " + scale_min + "; scale_max: " + scale_max + "; scale_50: " + profile.scale_50 + " ; HyperPredBG: "+HyperPredBG+" ; HypoPredBG: "+HypoPredBG+" ; ";
-             if (scale_ISF_ID == 0) {
-             rT.reason += " W1, scaling power: " + round((1 - ((sens - scale_max*scale_min*profile_sens)/(profile_sens - scale_max*scale_min*profile_sens)))*100, 1) + "%";
-             } else if (scale_ISF_ID == 1) {
-             rT.reason += " W2, scaling power: " + round((1 - ((sens - scale_max*profile_sens)/(profile_sens - scale_max*profile_sens)))*100, 1) + "%";
-             } else if (scale_ISF_ID == 3) {
-             rT.reason += " autoISF_MC: ISF from "+profile_sens+" to "+sens;
-             } else if (scale_ISF_ID == 3.1) {
-             rT.reason += " autoISF_BC: ISF from "+profile_sens+" to "+sens;
-             }
-             //MP rT.reason for UAM mods end
-
+            rT.reason += " insulinReq " + insulinReq + ", InsulinReqPCT " + insulinReqPCT*100+"%";
             if (microBolus >= maxBolus) {
                 rT.reason +=  "; maxBolus " + maxBolus;
             }

@@ -11,9 +11,9 @@ public final class BuildConfig {
   public static final int VERSION_CODE = 1500;
   public static final String VERSION_NAME = "2.8.2-AIMI-tsunami-0.6.2";
   // Fields from default config.
-  public static final String BUILDVERSION = "2fb9e09b-2021.05.28-15:03";
+  public static final String BUILDVERSION = "e168607d-2021.05.28-18:46";
   public static final String COMMITTED = "false";
-  public static final String HEAD = "2fb9e09b";
+  public static final String HEAD = "e168607d";
   public static final String REMOTE = "https://gitlab.com/MTR93600/aimi-tsunami.git";
   public static final String VERSION = "2.8.2-AIMI-tsunami-0.6.2";
 }
