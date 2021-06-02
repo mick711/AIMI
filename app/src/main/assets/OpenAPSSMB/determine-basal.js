@@ -443,7 +443,7 @@ var scale_max = profile.scale_max/100;
         console.log("Scale_ISF_ID: "+scale_ISF_ID);
         console.log("Change ISF from "+profile_sens+" to "+sens+" because HypoPredBG "+HypoPredBG+"  < 100 and SMB disable ; ");
         //rT.reason += "The risk to make an hypoglycemia is detected, HypoPredBG :"+HypoPredBG+" < 100 then SMB disabled; ";
-        enableSMB = false;
+        //enableSMB = false;
         }
 //############################# MP
 //### ISF SCALING CODE END ### MP
