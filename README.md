@@ -91,4 +91,8 @@ my settins :
 -BOOST Insulin : 1
 -ISF Modifier : 2
 
-
+==========================================
+2.8.2-AIMI-tsunami-0.6.3
+no need to change settings, this version manage the target differently, the variation is more precise.
+sensitivituRation change too for better result in my test
+enjoy :)

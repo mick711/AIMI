@@ -450,19 +450,25 @@ var scale_max = profile.scale_max/100;
 //############################# MP
 sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_data, sensitivityRatio); //autoISF
 //================= MT =====================================
+//experimental code for test
+var EBG = (0.02 * glucose_status.delta * glucose_status.delta) + (0.58 * glucose_status.long_avgdelta) + bg;
+var REBG = EBG / min_bg;
+console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
+
 //Target management
 //var HypoPredBG = round( bg - (iob_data.iob * sens) ) + round( 60 / 5 * ( minDelta - round(( -iob_data.activity * sens * 5 ), 2)));
 //var HyperPredBG = round( bg - (iob_data.iob * sens) ) + round( 60 / 5 * ( minDelta - round(( -iob_data.activity * sens * 5 ), 2)));
         console.log ("HypoPredBG = "+HypoPredBG+"; HyperPredBG ="+HyperPredBG+"; ");
        if (!profile.temptargetSet && HypoPredBG <= 125 && profile.sensitivity_raises_target ){//&& glucose_status.delta <= 0
-       var hypo_target = round ((target_bg - 60) * profile.autosens_max) + 60;
+       /*var hypo_target = round ((target_bg - 60) * profile.autosens_max) + 60;
        if (glucose_status.delta < 0){
        hypo_target = hypo_target + 10;
        }
        hypo_target = Math.min ( 130, hypo_target);
        if (now <= MealTimeStart && now >= MealTimeEnd){
        hypo_target = Math.min(100,hypo_target);
-       }
+       }*/
+       var hypo_target = round(Math.min(200, min_bg + (bg - min_bg)/3 ),0);
            if (target_bg === hypo_target){
            console.log("target_bg unchanged: "+hypo_target+"; ");
            }else{
@@ -471,7 +477,8 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
            target_bg = hypo_target;
            halfBasalTarget = 160;
                           var c = halfBasalTarget - normalTarget;
-                          sensitivityRatio = c/(c+target_bg-normalTarget);
+                          //sensitivityRatio = c/(c+target_bg-normalTarget);
+                          sensitivityRatio = REBG;
                        // limit sensitivityRatio to profile.autosens_max (1.2x by default)
                           sensitivityRatio = Math.min(sensitivityRatio, profile.autosens_max);
                           sensitivityRatio = round(sensitivityRatio,2);
@@ -485,13 +492,14 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
                           }
        }
        else if (!profile.temptargetSet && HyperPredBG >= profile.UAM_eventualBG && iob_data.iob >= iob_scale && profile.resistance_lowers_target){
-       var hyper_target = round((target_bg - 60)/profile.autosens_max)+60;// if target = 90 then hyper_target = 81 with autosens_min = 0.7
+       /*var hyper_target = round((target_bg - 60)/profile.autosens_max)+60;// if target = 90 then hyper_target = 81 with autosens_min = 0.7
        if (glucose_status.delta >0 && glucose_status.delta <= 5){
        hyper_target = hyper_target + glucose_status.delta;
        }else if (glucose_status.delta >= 10) {
        hyper_target = hyper_target - glucose_status.delta;
        }
-       hyper_target = Math.max (75,hyper_target);
+       hyper_target = Math.max (75,hyper_target);*/
+       var hyper_target = round(Math.max(75, min_bg - (bg - min_bg)/3 ),0);
        if (target_bg === hyper_target){
        console.log("target_bg unchanged: "+hyper_target+"; ");
        }else{
@@ -502,7 +510,8 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
        target_bg = hyper_target;
        halfBasalTarget = 160;
        var c = halfBasalTarget - normalTarget;
-       sensitivityRatio = c/(c+target_bg-normalTarget);
+       //sensitivityRatio = c/(c+target_bg-normalTarget);
+       sensitivityRatio = REBG;
         // limit sensitivityRatio to profile.autosens_max (1.2x by default)
        sensitivityRatio = Math.min(sensitivityRatio, profile.autosens_max);
        sensitivityRatio = round(sensitivityRatio,2);
@@ -518,6 +527,8 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
 
        }
 //================= MT =====================================
+
+
 
     //MP: autoISF activation (below) was moved into ISF scaling code above to prevent its activation during scaleISF function
     //sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_data, sensitivityRatio); //autoISF
@@ -1101,6 +1112,11 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
     if ( maxDelta > 0.30 * bg ) {
         console.error("maxDelta",convert_bg(maxDelta, profile),"> 30% of BG",convert_bg(bg, profile),"- disabling SMB");
         rT.reason += "maxDelta "+convert_bg(maxDelta, profile)+" > 30% of BG "+convert_bg(bg, profile)+": SMB disabled; ";
+        enableSMB = false;
+    }
+    if (scale_ISF_ID == 2) {
+        console.error("The risk to make an hypoglycemia was detected, HypoPredBG :",HypoPredBG," < 100 then SMB disabled; ");
+        rT.reason += "The risk to make an hypoglycemia was detected, HypoPredBG :"+HypoPredBG+" < 100 then SMB disabled; ";
         enableSMB = false;
     }
 
