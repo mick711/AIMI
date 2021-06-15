@@ -176,7 +176,7 @@ android {
                         // at last we are setting our apk name to it.
                         output.outputFileName  = newName
                         //MT : here you have to change the path by your way : windows (c:\.....) macos (just replace the xxx by you username and the folder name UAM)
-                        //variant.getPackageApplication().outputDirectory = new File("/Users/xxxx/Google Drive/Mon Drive/UAM/* Build AIMI Tsunami 063 *")
+                        //variant.getPackageApplication().outputDirectory = new File("/Users/xxxxx/Google Drive/Mon Drive/UAM/* Build AIMI Tsunami 063 *")
                 }
         }
     }

@@ -468,8 +468,13 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
        if (now <= MealTimeStart && now >= MealTimeEnd){
        hypo_target = Math.min(100,hypo_target);
        }*/
-       var hypo_target = round(Math.min(200, min_bg + (bg - min_bg)/3 ),0);
-           if (target_bg === hypo_target){
+       var hypo_target = round(Math.min(200, min_bg + (EBG - min_bg)/3 ),0);
+           if (hypo_target <= 90) {
+            hypo_target += 10;
+            console.log("target_bg from "+target_bg+" to "+hypo_target+" because HypoPredBG is lesser than 125 : "+HypoPredBG+"; ");
+            }
+
+           else if (target_bg === hypo_target){
            console.log("target_bg unchanged: "+hypo_target+"; ");
            }else{
            console.log("target_bg from "+target_bg+" to "+hypo_target+" because HypoPredBG is lesser than 125 : "+HypoPredBG+"; ");
