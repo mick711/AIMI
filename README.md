@@ -96,3 +96,12 @@ my settins :
 no need to change settings, this version manage the target differently, the variation is more precise.
 sensitivituRation change too for better result in my test
 enjoy :)
+=2.8.2-AIMI-tsunami-0.6.3=================
+In this version :
+-target management was modified for better action in case of small activity
+-SMB management is different. i used a prediction on 4 hours to determine the started action. Two news variables will be use in the code EBG and REBG to determine insulinReq
+-a new variable in settings, who is the average of carbs per day. This one will use to determine a maxiob for breakfast, lunch and dinner
+during my test i didn't use TT. The best result come with a prebolus. If you use it without prebolus, the rise will stop around 200, sometime 220, but will come back in few time, in range.
+An other strategy, was to eat a small thing before the meal, that will send like a prebolus and the loop will manage the rest of the meal and post meal.
+Other point, i volontary disable the possibility to change some settings. The idea is to observe if this can be good for everyone. Like it's the first time, i'm not sure it will take your settings or the default. let me know :) 
+Enjoy :)

@@ -268,7 +268,7 @@ public class GlucoseStatus {
 //################################# MP
 //### DATA SMOOTHING CORE START ### MP
 //################################# MP
-            
+
             // INITIALISE SMOOTHING WINDOW - 1st order exponential smoothing
             o1_smoothbg.clear(); // MP reset smoothed bg array
 
@@ -297,7 +297,7 @@ public class GlucoseStatus {
 
             if (sizeRecords >= windowsize + 1) { //MP standard smoothing window of 1 h
                 o2_smoothbg.add(data.get(windowsize-1).value); //MP Start 2nd order exponential data smoothing with bg from 1 h ago
-                o2_smoothdelta.add(data.get(windowsize).value - data.get(windowsize-1).value); //MP Start 2nd order exponential data smoothing with delta from 1 h ago
+                o2_smoothdelta.add(data.get(windowsize-1).value - data.get(windowsize).value); //MP Start 2nd order exponential data smoothing with delta from 1 h ago
             } else if (sizeRecords > 1){ //MP Data smoothing if more than one bg entry but less than 12 (1 h) available
                 o2_smoothbg.add(data.get(sizeRecords - 1).value); //MP Start 2nd order exponential data smoothing with oldest bg available
                 o2_smoothdelta.add(data.get(sizeRecords - 2).value - data.get(sizeRecords - 1).value); //MP Start 2nd order exponential data smoothing with oldest delta available

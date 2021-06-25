@@ -877,9 +877,9 @@
     <string name="key_UAM_PBolus1" translatable="false">UAM_PBolus1</string>
     <string name="UAM_PBolus1_title">UAM prebolus [U]</string>
     <string name="UAM_PBolus1_summary">Automatic prebolus if setting a TT of less than 90 mg/dl with a duration between 60 and 120 minutes.</string>
-        <string name="key_UAM_PBolus2" translatable="false">UAM_PBolus2</string>
-        <string name="UAM_PBolus2_title">Insulin Boost</string>
-        <string name="UAM_PBolus2_summary">This bolus will be send if CSF is lesser than 6 with iob lesser than (0.2 * maxiob), or 50% (if ISF2 = 2) of the value if CSF is between 6 and 10 with IOBPRED bigger than 80 </string>
+    <string name="key_UAM_PBolus2" translatable="false">UAM_PBolus2</string>
+    <string name="UAM_PBolus2_title">Insulin Boost</string>
+    <string name="UAM_PBolus2_summary">This bolus will be send if CSF is lesser than 6 with iob lesser than (0.2 * maxiob), or 50% (if ISF2 = 2) of the value if CSF is between 6 and 10 with IOBPRED bigger than 80 </string>
     <string name="pump_stopped">Pump stopped</string>
     <string name="pump_started">Pump started</string>
     <string name="pump_paused">Pump paused</string>
@@ -1459,9 +1459,9 @@
     <string name="key_Mealfactor_end" translatable="false">W2 assist end time</string>
     <string name="Mealfactor_end_summary">Hour of the day until (and including) which W2 assist is enabled.</string>
     <string name="Mealfactor_end_title">W2 assist end time [h]</string>
-    <string name="key_UAM_eventualBG" translatable="false">eventualBG above which >100% insulin required is authorised</string>
-    <string name="UAM_eventualBG_summary">eventualBG above which >100% of the calculated insulin required will be delivered. This UAM mode feature aims to halt a glucose climb early and requires good quality sensor data for safe use.</string>
-    <string name="UAM_eventualBG_title">ev.BG threshold for delivery of >100% insulinReq.</string>
+    <string name="key_UAM_eventualBG" translatable="false">eventualBG above will change the target</string>
+    <string name="UAM_eventualBG_summary">eventualBG above will change the target</string>
+    <string name="UAM_eventualBG_title">ev.BG threshold to change the target.</string>
     <string name="key_w2_iob_threshold" translatable="false">W2_IOB_threshold</string>
     <string name="w2_iob_threshold_summary">Minimum percentage of maxIOB above which W2 assist is enabled. Below this threshold IOB, W2 assist will be disabled. Example: If this value is 10 and maxIOB is 8, your current IOB must be at least (8 * 10/100 =) 0.8 U for W2 assist to be active. This parameter is a safety feature assuming that postprandial glucose spikes (e.g. due to fat) occur before all insulin from the last meal decayed. If you set this value to 0, W2 assist will be decoupled from current IOB. Only do this if you are confident your sensor is not noisy, you enabled data smoothing and your scaling parameters and profile allow for safe use of W2 assist.</string>
     <string name="w2_iob_threshold_title">W2 IOB threshold [%]</string>
@@ -1475,4 +1475,7 @@
     <string name="key_UAM_hyperBG" translatable="false">Value of HyperPredBG to send a bolus</string>
     <string name="UAM_hyperBG_summary">Value of HyperPredBG to send a bolus value define in UAM Automated Bolus</string>
     <string name="UAM_hyperBG_title">Value of HyperPredBG to send a bolus</string>
+    <string name="key_TotalCarbs" translatable="false">Average total carbs per day</string>
+    <string name="UAM_TotalCarbs_summary">this number defines the average total number of carbs per day</string>
+    <string name="UAM_TotalCarbs_title">this number defines the average total number of carbs per day</string>
 </resources>

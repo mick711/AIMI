@@ -469,12 +469,13 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
        hypo_target = Math.min(100,hypo_target);
        }*/
        var hypo_target = round(Math.min(200, min_bg + (EBG - min_bg)/3 ),0);
-           if (hypo_target <= 90) {
-            hypo_target += 10;
+           if (HypoPredBG <= 90 && hypo_target <= 100 && EBG > 80) {
+            hypo_target += 20;
             console.log("target_bg from "+target_bg+" to "+hypo_target+" because HypoPredBG is lesser than 125 : "+HypoPredBG+"; ");
-            }
-
-           else if (target_bg === hypo_target){
+            }else if (EBG <= 85) {
+            hypo_target = 144;
+            console.log("target_bg from "+target_bg+" to "+hypo_target+" because HypoPredBG is lesser than 125 : "+HypoPredBG+"; ");
+            }else if (target_bg === hypo_target){
            console.log("target_bg unchanged: "+hypo_target+"; ");
            }else{
            console.log("target_bg from "+target_bg+" to "+hypo_target+" because HypoPredBG is lesser than 125 : "+HypoPredBG+"; ");
@@ -872,6 +873,9 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             }else if (HyperPredBGTest < 1000){
             var insulinPeakTime = 90;
             console.log("insulinPeakTime because HyperPredBGTest < 1000 : "+insulinPeakTime);
+            }else if (HyperPredBGTest < 800){
+            var insulinPeakTime = 110;
+            console.log("insulinPeakTime because HyperPredBGTest < 800 : "+insulinPeakTime);
             }
             // add 30m to allow for insulin delivery (SMBs or temps)
             //insulinPeakTime = 90;
@@ -1359,8 +1363,40 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             var roundSMBTo = 1 / profile.bolus_increment;
             var insulinReqPCT = profile.UAM_InsulinReq/100;
             var maxBolusTT = maxBolus;
+            var eMaxIOB = Math.min((EBG - target_bg)/profile.carb_ratio,profile.max_iob);
+            var eCarbs = ((EBG * REBG)-target_bg)/profile.carb_ratio;
+            var eInsulin = eCarbs/profile.carb_ratio;
+            var TotalCarbs = profile.TotalCarbs;
+            var mCarbs = (TotalCarbs/6)/10;
+            var lCarbs = (TotalCarbs/2)/13;
+            var dCarbs = (TotalCarbs/2)/12;
 
-            if (csf <=6 && bg >= 100 && now >= MealTimeStart && now <= MealTimeEnd && IOBpredBG >= 80){
+            var MaxCarbs = 0;
+            if (now >= 6 && now <= 11 ){
+            MaxCarbs = mCarbs;
+            } else if (now >= 12 && now <= 18){
+            MaxCarbs = lCarbs;
+            } else if (now >= 19 && now <= 23){
+            MaxCarbs = dCarbs;
+            }
+
+            if (HyperPredBGTest >=450 && iob_data.iob <= eMaxIOB && glucose_status.delta >= 4 && now >=MealTimeStart && now <=MealTimeEnd && IOBpredBG >= 85 && iob_data.data <= MaxCarbs){
+              /*  if (HyperPredBGTest >= 900 && bg >= 100 && glucose_status.delta >= 20){
+                insulinReq = eInsulin;
+                insulinReqPCT = 1.2;
+                maxBolusTT = insulinReq;
+                console.log("Exp. the condition are ok to send 120% of insulinReq");
+                }else{*/
+
+            insulinReq = eInsulin;
+            insulinReqPCT = 1;
+            maxBolusTT = eInsulin;
+            console.log ("Experimental eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because HyperPredBGTest >= 450 ");
+            }
+            //}
+
+
+            /*if (csf <=6 && bg >= 100 && now >= MealTimeStart && now <= MealTimeEnd && IOBpredBG >= 80){
                  if (HyperPredBG > profile.UAM_eventualBG && glucose_status.delta > 8 && glucose_status.delta_supersmooth > 8 && glucose_status.delta <15 && iob_data.iob < (0.2*max_iob)){
                  insulinReq = profile.UAM_PBolus2;
                  insulinReqPCT = profile.UAM_PBolus2;
@@ -1383,8 +1419,8 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
                  }else{
                  console.log ("CSF : "+csf+" <= 10 but no action required");
                  }
-             }
-            var microBolus = Math.floor(Math.min(insulinReq * insulinReqPCT,maxBolus)*roundSMBTo)/roundSMBTo;
+             }*/
+            var microBolus = Math.floor(Math.min(insulinReq * insulinReqPCT,maxBolusTT)*roundSMBTo)/roundSMBTo;
             // calculate a long enough zero temp to eventually correct back up to target
             var smbTarget = target_bg;
             worstCaseInsulinReq = (smbTarget - (naive_eventualBG + minIOBPredBG)/2 ) / sens;
@@ -1409,7 +1445,7 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             }
             rT.reason += " insulinReq " + insulinReq + ", InsulinReqPCT " + insulinReqPCT*100+"%";
             if (microBolus >= maxBolus) {
-                rT.reason +=  "; maxBolus " + maxBolus;
+                rT.reason +=  "; maxBolusTT " + maxBolusTT;
             }
             if (durationReq > 0) {
                 rT.reason += "; setting " + durationReq + "m low temp of " + smbLowTempReq + "U/h";

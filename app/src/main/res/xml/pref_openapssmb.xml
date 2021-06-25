@@ -28,6 +28,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="65"
+            android:enabled="false"
             android:dialogMessage="@string/UAM_InsulinReq_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_InsulinReq"
@@ -36,7 +37,17 @@
             validate:floatminNumber="50"
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
-            android:defaultValue="160"
+            android:defaultValue="150"
+            android:dialogMessage="@string/UAM_TotalCarbs_summary"
+            android:inputType="numberDecimal"
+            android:key="@string/key_TotalCarbs"
+            android:title="@string/UAM_TotalCarbs_title"
+            validate:floatmaxNumber="300"
+            validate:floatminNumber="30"
+            validate:testType="floatNumericRange" />
+        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+            android:defaultValue="155"
+            android:enabled="false"
             android:dialogMessage="@string/UAM_eventualBG_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_eventualBG"
@@ -46,6 +57,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="220"
+            android:enabled="false"
             android:dialogMessage="@string/UAM_hyperBG_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_hyperBG"
@@ -54,7 +66,8 @@
             validate:floatminNumber="180"
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
-            android:defaultValue="100"
+            android:defaultValue="70"
+            android:enabled="false"
             android:dialogMessage="@string/scale_min_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_scale_min"
@@ -63,7 +76,8 @@
             validate:floatminNumber="70"
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
-            android:defaultValue="4"
+            android:defaultValue="2"
+            android:enabled="false"
             android:dialogMessage="@string/scale_50_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_scale_50"
@@ -72,7 +86,8 @@
             validate:floatminNumber="1"
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
-            android:defaultValue="30"
+            android:defaultValue="20"
+            android:enabled="false"
             android:dialogMessage="@string/scale_max_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_scale_max"
@@ -82,6 +97,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="1.5"
+            android:enabled="false"
             android:dialogMessage="@string/W2_modifier_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_W2_modifier"
@@ -90,7 +106,8 @@
             validate:floatminNumber="1"
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
-            android:defaultValue="10"
+            android:defaultValue="20"
+            android:enabled="false"
             android:dialogMessage="@string/w2_iob_threshold_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_w2_iob_threshold"
@@ -139,7 +156,7 @@
         <!--            validate:floatminNumber="2"-->
         <!--            validate:testType="floatNumericRange" />-->
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
-            android:defaultValue="11"
+            android:defaultValue="7"
             android:dialogMessage="@string/Mealfactor_start_summary"
             android:digits="0123456789.,"
             android:inputType="number"
@@ -179,7 +196,7 @@
         <!--            validate:floatminNumber="1"-->
         <!--            validate:testType="floatNumericRange" />-->
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
-            android:defaultValue="2"
+            android:defaultValue="2.5"
             android:dialogMessage="@string/UAM_PBolus1_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_PBolus1"
@@ -198,6 +215,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="3"
+            android:enabled="false"
             android:dialogMessage="@string/UAM_ISF1_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_ISF1"
@@ -207,6 +225,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="2"
+            android:enabled="false"
             android:dialogMessage="@string/UAM_ISF2_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_ISF2"
@@ -216,7 +235,8 @@
             validate:testType="floatNumericRange" />
         <!--MP: bolus cap during TT START-->
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
-            android:defaultValue="1"
+            android:defaultValue="2.5"
+            android:enabled="true"
             android:dialogMessage="@string/UAM_boluscap_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_boluscap"
@@ -234,13 +254,13 @@
             android:defaultValue="false"
             android:key="@string/key_openapsama_useautoisf"
             android:title="@string/openapsama_useautoisf" />
-<!-- MP data smoothing start -->
+        <!-- MP data smoothing start -->
         <SwitchPreference
             android:defaultValue="false"
             android:key="@string/key_enable_datasmoothing"
             android:summary="@string/enable_datasmoothing_summary"
             android:title="@string/enable_datasmoothing" />
-<!-- MP data smoothing end -->
+        <!-- MP data smoothing end -->
         <!--        <SwitchPreference-->
         <!--            android:defaultValue="false"-->
         <!--            android:dependency="@string/key_use_smb"-->
