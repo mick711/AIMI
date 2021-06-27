@@ -864,13 +864,13 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             // set minPredBGs starting when currently-dosed insulin activity will peak
             // look ahead 60m (regardless of insulin type) so as to be less aggressive on slower insulins
             var insulinPeakTime = 90;
-            if (HyperPredBGTest > 1000 && now > 11){
+            if (HyperPredBGTest >= 1000 && HyperPredBGTest <1200){
             var insulinPeakTime = 35;
             console.log("insulinPeakTime because BG rising : "+insulinPeakTime);
-            }else if (HyperPredBGTest > 1200){
+            }else if (HyperPredBGTest >= 1200){
             var insulinPeakTime = 25;
             console.log("insulinPeakTime because BG rising more than expected : "+insulinPeakTime);
-            }else if (HyperPredBGTest < 1000){
+            }else if (HyperPredBGTest < 1000 && HyperPredBGTest >= 800){
             var insulinPeakTime = 90;
             console.log("insulinPeakTime because HyperPredBGTest < 1000 : "+insulinPeakTime);
             }else if (HyperPredBGTest < 800){
@@ -1367,9 +1367,9 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             var eCarbs = ((EBG * REBG)-target_bg)/profile.carb_ratio;
             var eInsulin = eCarbs/profile.carb_ratio;
             var TotalCarbs = profile.TotalCarbs;
-            var mCarbs = (TotalCarbs/6)/10;
-            var lCarbs = (TotalCarbs/2)/13;
-            var dCarbs = (TotalCarbs/2)/12;
+            var mCarbs = (TotalCarbs/6)/profile.carb_ratio;
+            var lCarbs = (TotalCarbs/2)/profile.carb_ratio;
+            var dCarbs = (TotalCarbs/2)/profile.carb_ratio;
 
             var MaxCarbs = 0;
             if (now >= 6 && now <= 11 ){
@@ -1379,8 +1379,10 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             } else if (now >= 19 && now <= 23){
             MaxCarbs = dCarbs;
             }
+            //var exInsulin = MaxCarbs - (glucose_status.delta * 0.04 * 7 * 0.8);
+            //var eMaxIOB = MaxCarbs + exInsulin;
 
-            if (HyperPredBGTest >=450 && iob_data.iob <= eMaxIOB && glucose_status.delta >= 4 && now >=MealTimeStart && now <=MealTimeEnd && IOBpredBG >= 85 && iob_data.data <= MaxCarbs){
+            if (HyperPredBGTest >=450 && HyperPredBGTest <= 1000 && iob_data.iob <= eMaxIOB && glucose_status.delta >= 4 && now >=MealTimeStart && now <=MealTimeEnd && IOBpredBG >= 85 && iob_data.data <= MaxCarbs){
               /*  if (HyperPredBGTest >= 900 && bg >= 100 && glucose_status.delta >= 20){
                 insulinReq = eInsulin;
                 insulinReqPCT = 1.2;
@@ -1392,7 +1394,12 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             insulinReqPCT = 1;
             maxBolusTT = eInsulin;
             console.log ("Experimental eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because HyperPredBGTest >= 450 ");
-            }
+            }/*else if (HyperPredBGTest >= 1000 && eMaxIOB <=MaxCarbs && glucose_status.delta > 8 ){
+            insulinReq = exInsulin;
+            insulinReqPCT= 1;
+            maxBolusTT = exInsulin;
+            console.log ("Experimental eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", exInsulin :"+exInsulin+"Because HyperPredBGTest >= 1000 ");
+            }*/
             //}
 
 

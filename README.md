@@ -103,5 +103,5 @@ In this version :
 -a new variable in settings, who is the average of carbs per day. This one will use to determine a maxiob for breakfast, lunch and dinner
 during my test i didn't use TT. The best result come with a prebolus. If you use it without prebolus, the rise will stop around 200, sometime 220, but will come back in few time, in range.
 An other strategy, was to eat a small thing before the meal, that will send like a prebolus and the loop will manage the rest of the meal and post meal.
-Other point, i volontary disable the possibility to change some settings. The idea is to observe if this can be good for everyone. Like it's the first time, i'm not sure it will take your settings or the default. let me know :) 
+Other point, i volontary disable the possibility to change some settings. The idea is to observe if this can be good for everyone. Like it's the first time, i'm not sure it will take your settings or the default. let me know :)
 Enjoy :)
