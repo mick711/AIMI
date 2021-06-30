@@ -444,7 +444,7 @@
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
                 android:title="@string/statuslights_bage_warning"
-                validate:maxNumber="1000"
+                validate:maxNumber="8760"
                 validate:minNumber="24"
                 validate:testType="numericRange" />
 
@@ -457,7 +457,7 @@
                 android:selectAllOnFocus="true"
                 android:singleLine="true"
                 android:title="@string/statuslights_bage_critical"
-                validate:maxNumber="1000"
+                validate:maxNumber="8760"
                 validate:minNumber="24"
                 validate:testType="numericRange" />
 

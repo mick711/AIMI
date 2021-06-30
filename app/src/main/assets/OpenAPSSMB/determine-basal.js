@@ -864,13 +864,13 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             // set minPredBGs starting when currently-dosed insulin activity will peak
             // look ahead 60m (regardless of insulin type) so as to be less aggressive on slower insulins
             var insulinPeakTime = 90;
-            if (HyperPredBGTest >= 1000 && HyperPredBGTest <1200){
+            if (HyperPredBGTest >= 900 && HyperPredBGTest <1200){
             var insulinPeakTime = 35;
             console.log("insulinPeakTime because BG rising : "+insulinPeakTime);
             }else if (HyperPredBGTest >= 1200){
             var insulinPeakTime = 25;
             console.log("insulinPeakTime because BG rising more than expected : "+insulinPeakTime);
-            }else if (HyperPredBGTest < 1000 && HyperPredBGTest >= 800){
+            }else if (HyperPredBGTest < 900 && HyperPredBGTest >= 800){
             var insulinPeakTime = 90;
             console.log("insulinPeakTime because HyperPredBGTest < 1000 : "+insulinPeakTime);
             }else if (HyperPredBGTest < 800){
@@ -888,7 +888,7 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             // wait 85-105m before setting COB and 60m for UAM minPredBGs
             if ( (cid || remainingCIpeak > 0) && COBpredBGs.length > insulinPeak5m && (COBpredBG < minCOBPredBG) ) { minCOBPredBG = round(COBpredBG); }
             if ( (cid || remainingCIpeak > 0) && COBpredBG > maxIOBPredBG ) { maxCOBPredBG = COBpredBG; }
-            if ( enableUAM && UAMpredBGs.length > 12 && (UAMpredBG < minUAMPredBG) ) { minUAMPredBG = round(UAMpredBG); }
+            if ( enableUAM && UAMpredBGs.length > 6 && (UAMpredBG < minUAMPredBG) ) { minUAMPredBG = round(UAMpredBG); }
             if ( enableUAM && UAMpredBG > maxIOBPredBG ) { maxUAMPredBG = UAMpredBG; }
         });
         // set eventualBG to include effect of carbs
@@ -1335,10 +1335,10 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             // if IOB covers more than COB, limit maxBolus to 30m of basal
             } else if ( iob_data.iob > mealInsulinReq && iob_data.iob > 0 ) {
                 console.error("IOB",iob_data.iob,"> COB",meal_data.mealCOB+"; mealInsulinReq =",mealInsulinReq);
-           //     if (profile.maxUAMSMBBasalMinutes) {
-           //         console.error("profile.maxUAMSMBBasalMinutes:",profile.maxUAMSMBBasalMinutes,"profile.current_basal:",profile.current_basal);
-           //         maxBolus = round( profile.current_basal * profile.maxUAMSMBBasalMinutes / 60 ,1);
-             //MP: UAM_boluscap limiter: Use UAM minutes outside TT (default lines: above)
+                if (profile.maxUAMSMBBasalMinutes) {
+                    console.error("profile.maxUAMSMBBasalMinutes:",profile.maxUAMSMBBasalMinutes,"basal:",basal);
+                    maxBolus = round( basal * profile.maxUAMSMBBasalMinutes / 60 ,1);
+             /*//MP: UAM_boluscap limiter: Use UAM minutes outside TT (default lines: above)
                 if (profile.maxUAMSMBBasalMinutes && scale_ISF_ID !== 0 && scale_ISF_ID !== 1) {
                     if (scale_ISF_ID == 3.1) { //MP: Cap maxbolus for autoISF at modified UAM_boluscap
                         console.error("autoISF_BC: maxbolus capped at ",0.75 * profile.UAM_boluscap," U.");
@@ -1351,13 +1351,14 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
                 } else if (scale_ISF_ID == 0 || scale_ISF_ID == 1) {
                     console.error("profile.UAM_boluscap:",profile.UAM_boluscap);
                     maxBolus = profile.UAM_boluscap;
-                } else {
+                }*/
+                }else {
                     console.error("profile.maxUAMSMBBasalMinutes undefined: defaulting to 30m");
-                    maxBolus = round( profile.current_basal * 30 / 60 ,1);
+                    maxBolus = round( basal * 30 / 60 ,1);
                 }
             } else {
-                console.error("profile.maxSMBBasalMinutes:",profile.maxSMBBasalMinutes,"profile.current_basal:",profile.current_basal);
-                maxBolus = round( profile.current_basal * profile.maxSMBBasalMinutes / 60 ,1);
+                console.error("profile.maxSMBBasalMinutes:",profile.maxSMBBasalMinutes,"basal:",basal);
+                maxBolus = round( basal * profile.maxSMBBasalMinutes / 60 ,1);
             }
             // bolus 1/2 the insulinReq, up to maxBolus, rounding down to nearest bolus increment
             var roundSMBTo = 1 / profile.bolus_increment;
@@ -1379,28 +1380,22 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             } else if (now >= 19 && now <= 23){
             MaxCarbs = dCarbs;
             }
-            //var exInsulin = MaxCarbs - (glucose_status.delta * 0.04 * 7 * 0.8);
-            //var eMaxIOB = MaxCarbs + exInsulin;
+            var exInsulin = MaxCarbs - (glucose_status.delta * 0.04 * 7 * 0.8);
+            var eMaxIOB = MaxCarbs - exInsulin;
 
-            if (HyperPredBGTest >=450 && HyperPredBGTest <= 1000 && iob_data.iob <= eMaxIOB && glucose_status.delta >= 4 && now >=MealTimeStart && now <=MealTimeEnd && IOBpredBG >= 85 && iob_data.data <= MaxCarbs){
-              /*  if (HyperPredBGTest >= 900 && bg >= 100 && glucose_status.delta >= 20){
-                insulinReq = eInsulin;
-                insulinReqPCT = 1.2;
-                maxBolusTT = insulinReq;
-                console.log("Exp. the condition are ok to send 120% of insulinReq");
-                }else{*/
+            if (HyperPredBGTest >=450 && HyperPredBGTest <= 900 && iob_data.iob <= eMaxIOB && glucose_status.delta >= 4 && now >=MealTimeStart && now <=MealTimeEnd && IOBpredBG >= 85 && iob_data.data <= MaxCarbs){
 
             insulinReq = eInsulin;
             insulinReqPCT = 1;
             maxBolusTT = eInsulin;
             console.log ("Experimental eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because HyperPredBGTest >= 450 ");
-            }/*else if (HyperPredBGTest >= 1000 && eMaxIOB <=MaxCarbs && glucose_status.delta > 8 ){
+            }else if (HyperPredBGTest >= 900 && eMaxIOB <=MaxCarbs && glucose_status.delta >= 8 && IOBpredBG >= 85 && iob_data.data <= MaxCarbs){
             insulinReq = exInsulin;
             insulinReqPCT= 1;
             maxBolusTT = exInsulin;
             console.log ("Experimental eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", exInsulin :"+exInsulin+"Because HyperPredBGTest >= 1000 ");
-            }*/
-            //}
+            }
+
 
 
             /*if (csf <=6 && bg >= 100 && now >= MealTimeStart && now <= MealTimeEnd && IOBpredBG >= 80){
@@ -1431,7 +1426,7 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             // calculate a long enough zero temp to eventually correct back up to target
             var smbTarget = target_bg;
             worstCaseInsulinReq = (smbTarget - (naive_eventualBG + minIOBPredBG)/2 ) / sens;
-            durationReq = round(30*worstCaseInsulinReq / profile.current_basal);
+            durationReq = round(30*worstCaseInsulinReq / basal);
 
             // if insulinReq > 0 but not enough for a microBolus, don't set an SMB zero temp
             if (insulinReq > 0 && microBolus < profile.bolus_increment) {

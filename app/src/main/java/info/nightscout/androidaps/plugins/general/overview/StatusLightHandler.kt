@@ -20,11 +20,11 @@ import javax.inject.Singleton
 
 @Singleton
 class StatusLightHandler @Inject constructor(
-    private val resourceHelper: ResourceHelper,
-    private val sp: SP,
-    private val activePlugin: ActivePluginProvider,
-    private val warnColors: WarnColors,
-    private val config: Config
+        private val resourceHelper: ResourceHelper,
+        private val sp: SP,
+        private val activePlugin: ActivePluginProvider,
+        private val warnColors: WarnColors,
+        private val config: Config
 ) {
 
     /**
@@ -36,7 +36,8 @@ class StatusLightHandler @Inject constructor(
         handleAge(careportal_cannula_age, CareportalEvent.SITECHANGE, R.string.key_statuslights_cage_warning, 48.0, R.string.key_statuslights_cage_critical, 72.0)
         handleAge(careportal_insulin_age, CareportalEvent.INSULINCHANGE, R.string.key_statuslights_iage_warning, 72.0, R.string.key_statuslights_iage_critical, 144.0)
         handleAge(careportal_sensor_age, CareportalEvent.SENSORCHANGE, R.string.key_statuslights_sage_warning, 216.0, R.string.key_statuslights_sage_critical, 240.0)
-        if (pump.pumpDescription.isBatteryReplaceable) {
+        //if (pump.pumpDescription.isBatteryReplaceable) {
+        if (pump.pumpDescription.isBatteryReplaceable || (pump is OmnipodPumpPlugin && pump.isUseRileyLinkBatteryLevel && pump.isBatteryChangeLoggingEnabled)){
             handleAge(careportal_pb_age, CareportalEvent.PUMPBATTERYCHANGE, R.string.key_statuslights_bage_warning, 216.0, R.string.key_statuslights_bage_critical, 240.0)
         }
         if (!config.NSCLIENT) {
