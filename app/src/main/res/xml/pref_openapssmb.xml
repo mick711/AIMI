@@ -28,7 +28,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="65"
-            android:enabled="false"
+            android:enabled="true"
             android:dialogMessage="@string/UAM_InsulinReq_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_InsulinReq"
@@ -47,7 +47,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="155"
-            android:enabled="false"
+            android:enabled="true"
             android:dialogMessage="@string/UAM_eventualBG_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_eventualBG"
@@ -57,7 +57,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="220"
-            android:enabled="false"
+            android:enabled="true"
             android:dialogMessage="@string/UAM_hyperBG_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_hyperBG"
@@ -67,7 +67,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="70"
-            android:enabled="false"
+            android:enabled="true"
             android:dialogMessage="@string/scale_min_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_scale_min"
@@ -77,7 +77,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="2"
-            android:enabled="false"
+            android:enabled="true"
             android:dialogMessage="@string/scale_50_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_scale_50"
@@ -87,7 +87,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="20"
-            android:enabled="false"
+            android:enabled="true"
             android:dialogMessage="@string/scale_max_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_scale_max"
@@ -97,7 +97,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="1.5"
-            android:enabled="false"
+            android:enabled="true"
             android:dialogMessage="@string/W2_modifier_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_W2_modifier"
@@ -107,7 +107,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="20"
-            android:enabled="false"
+            android:enabled="true"
             android:dialogMessage="@string/w2_iob_threshold_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_w2_iob_threshold"
@@ -215,7 +215,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="3"
-            android:enabled="false"
+            android:enabled="true"
             android:dialogMessage="@string/UAM_ISF1_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_ISF1"
@@ -225,7 +225,7 @@
             validate:testType="floatNumericRange" />
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="2"
-            android:enabled="false"
+            android:enabled="true"
             android:dialogMessage="@string/UAM_ISF2_summary"
             android:inputType="numberDecimal"
             android:key="@string/key_UAM_ISF2"
