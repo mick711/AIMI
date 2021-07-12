@@ -361,19 +361,20 @@ var scale_max = profile.scale_max/100;
 // 3 = autoISF
 //autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_data, sensitivityRatio); //MP: Keep autoISF running in the bg so it can analyse the development of the glucose curve
   //  if (profile.temptargetSet && target_bg >= 80 && target_bg <= 85 && profile.temptarget_duration >= 29 && iob_data.iob < 6) { //MT: change isf for a normal meal who will rise slowly
-    if (profile.temptargetSet && target_bg >= 80 && target_bg <= 85 && profile.temptarget_duration >= 29 && iob_data.iob < 0.8 * max_iob && glucose_status.delta >= 0 && bg >= 80) { //MT: change isf for a normal meal who will rise slowly
+    //if (profile.temptargetSet && target_bg >= 80 && target_bg <= 85 && profile.temptarget_duration >= 29 && iob_data.iob < 0.8 * max_iob && glucose_status.delta >= 0 && bg >= 80) { //MT: change isf for a normal meal who will rise slowly
+    if (target_bg >= 75 && target_bg <= 85 && iob_data.iob < 0.8 * max_iob && glucose_status.delta >= 4 && bg >= 90) { //MT: change isf for a normal meal who will rise slowly
             //sens = (profile.sens / (glucose_status.delta / 3.5)); //MP: Empirical model, v1 Apr17_midnight
             //sens = profile.sens / (((profile.scale_max * glucose_status.delta) / ((profile.scale_50/(bg/target_bg) + glucose_status.delta))+1); //MP: Model based on Michaelis-Menten kinetic, self limiting at higher values. OUTDATED, parameters don't represent their meaning
             //sens = profile.sens - (((profile.sens - (profile.sens * profile.scale_max)) * glucose_status.delta) / ((profile.scale_50/(bg/target_bg)) + glucose_status.delta)); //MP: tsunami_0.5
             sens = scale_min * profile.sens - (((scale_min * profile.sens - (profile.sens * scale_max)) * glucose_status.delta) / ((profile.scale_50/(bg/target_bg)) + glucose_status.delta)); //MP: Fixed model based on Michaelis-Menten kinetic, self limiting at higher values. v0.3: Curve steepness increases with increasing bg.
             sens = round(sens, 1);
-            scale_ISF_ID = 0;
-            console.log("Scale_ISF_ID: "+scale_ISF_ID);
+            //scale_ISF_ID = 0;
+            //console.log("Scale_ISF_ID: "+scale_ISF_ID);
             console.log("Scale_50 adjusted from "+profile.scale_50+" to "+round (profile.scale_50/(bg/target_bg), 2)+"; scale factor: "+bg+"/"+target_bg+" = "+round((bg/target_bg), 2)+";");
             console.log("W1: Scale ISF from "+profile_sens+" to "+sens);
     }else if (iob_data.iob > iob_scale && now >= MealTimeStart && now <= MealTimeEnd && glucose_status.delta >= 4 && bg >= 100) { //MP: Second wave assist outside UAM Mode, active only during user-defined hours
-            scale_ISF_ID = 1;
-            console.log("Scale_ISF_ID: "+scale_ISF_ID);
+            //scale_ISF_ID = 1;
+            //console.log("Scale_ISF_ID: "+scale_ISF_ID);
             if (profile.enable_datasmoothing) { //MP if data smoothing is enabled
                 console.log("Using smoothed bg ("+glucose_status.bg_supersmooth_now+") and delta ("+glucose_status.delta_supersmooth+").");
                 if (glucose_status.delta_supersmooth > 7) { //MP activate W1 mode if smoothed delta > 7
@@ -471,10 +472,10 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
        var hypo_target = round(Math.min(200, min_bg + (EBG - min_bg)/3 ),0);
            if (HypoPredBG <= 90 && hypo_target <= 100 && EBG > 80) {
             hypo_target += 20;
-            console.log("target_bg from "+target_bg+" to "+hypo_target+" because HypoPredBG is lesser than 125 : "+HypoPredBG+"; ");
+            console.log("target_bg from "+target_bg+" to "+hypo_target+" because HypoPredBG is lesser than 90 : "+HypoPredBG+"; ");
             }else if (EBG <= 85) {
             hypo_target = 144;
-            console.log("target_bg from "+target_bg+" to "+hypo_target+" because HypoPredBG is lesser than 125 : "+HypoPredBG+"; ");
+            console.log("target_bg from "+target_bg+" to "+hypo_target+" because EBG is lesser than 85 : "+EBG+"; ");
             }else if (target_bg === hypo_target){
            console.log("target_bg unchanged: "+hypo_target+"; ");
            }else{
@@ -534,7 +535,7 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
        }
 //================= MT =====================================
 
-
+    console.log("***hypo_target : "+hypo_target+" & hyper_target : "+hyper_target);
 
     //MP: autoISF activation (below) was moved into ISF scaling code above to prevent its activation during scaleISF function
     //sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_data, sensitivityRatio); //autoISF
@@ -901,7 +902,7 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             if ( (cid || remainingCIpeak > 0) && COBpredBG > maxIOBPredBG ) { maxCOBPredBG = COBpredBG; }
             if ( enableUAM && UAMpredBGs.length > 6 && (UAMpredBG < minUAMPredBG) ) { minUAMPredBG = round(UAMpredBG); }
             if ( enableUAM && UAMpredBG > maxIOBPredBG ) { maxUAMPredBG = UAMpredBG; }
-            console.log("insulinPeakTime : "+insulinPeakTime+" and insulinPeak5m : "+insulinPeak5m+" prediction : "+curvepred * 5+" minutes");
+            //console.log("insulinPeakTime : "+insulinPeakTime+" and insulinPeak5m : "+insulinPeak5m+" prediction : "+curvepred * 5+" minutes");
         });
         //console.log("insulinPeakTime : "+insulinPeakTime+" and insulinPeak5m : "+insulinPeak5m+" prediction : "+curvepred * 5+" minutes");
 
@@ -1397,19 +1398,44 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             MaxCarbs = dCarbs;
             }
             var exInsulin = MaxCarbs - (glucose_status.delta * 0.04 * 7 * 0.8);
+            console.log("### experimetal MaxCarbs : "+MaxCarbs+", eMaxIOB : "+eMaxIOB+", eCarbs : "+eCarbs+", eInsulin : "+eInsulin+", exInsuline : "+exInsulin+", target_bg : "+target_bg);
             //var eMaxIOB = MaxCarbs - exInsulin;
-
-            if (HyperPredBGTest >=450 && HyperPredBGTest <= 850 && iob_data.iob <= eMaxIOB && glucose_status.delta >= 4 && now >=MealTimeStart && now <=MealTimeEnd && IOBpredBG >= 85 && iob_data.data <= MaxCarbs){
-
-            insulinReq = eInsulin;
-            insulinReqPCT = 1;
-            maxBolusTT = eInsulin;
-            console.log ("Experimental eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because HyperPredBGTest >= 450 && <= 800");
-            }else if (HyperPredBGTest >= 850 && eMaxIOB <=MaxCarbs && glucose_status.delta >= 8 && IOBpredBG >= 85 && iob_data.data <= MaxCarbs){
-            insulinReq = exInsulin;
-            insulinReqPCT= 1;
-            maxBolusTT = exInsulin;
-            console.log ("Experimental eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", exInsulin :"+exInsulin+"Because HyperPredBGTest >= 850 ");
+           /* if (csf <= 10 && now >= MealTimeStart && now <= MealTimeEnd && iob_data.iob < eMaxIOB){
+            console.log("### experimetal MaxCarbs : "+MaxCarbs+", eMaxIOB : "+eMaxIOB+", eCarbs : "+eCarbs+", eInsulin : "+eInsulin+", exInsuline : "+exInsulin);
+            }*/
+            //if (HyperPredBGTest >=450 && HyperPredBGTest <= 850 && iob_data.iob <= eMaxIOB && glucose_status.delta >= 4 && now >=MealTimeStart && now <=MealTimeEnd && IOBpredBG >= 85 && iob_data.data <= MaxCarbs){
+            /*if (csf <= 10 && now >= profile.Mealfactor_start && now <= profile.Mealfactor_end && iob_data.data <= MaxCarbs){
+                if (bg >= 100 && glucose_status.delta > 0){
+                insulinReq = eInsulin;
+                insulinReqPCT = 1;
+                maxBolusTT = eInsulin;
+                console.log ("*** Experimental1 eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because because csf <= 10");
+                }else if (bg >= 180 && HyperPredBGTest >= 90 && glucose_status.delta >= 6){//(HyperPredBGTest >= 850 && eMaxIOB <=MaxCarbs && glucose_status.delta >= 8 && IOBpredBG >= 85 && iob_data.data <= MaxCarbs){
+                insulinReq = exInsulin;
+                insulinReqPCT= 1;
+                maxBolusTT = exInsulin;
+                console.log ("*** Experimental2 eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", exInsulin :"+exInsulin+"Because HyperPredBGTest >= 850 ");
+                }
+            }*/
+            if (HyperPredBGTest > 450 && target_bg <=85 && now >= MealTimeStart && now <= MealTimeEnd && iob_data < eMaxIOB && IOBpredBG >= 80){
+                             if (glucose_status.delta > 0 && bg > 100){
+                             insulinReq = eInsulin ;
+                             insulinReqPCT = 1;
+                             maxBolusTT = insulinReq;
+                             //console.log ("CSF : "+csf+" >= 6 and <= 10, eInsulin : "+insulinReq+" U ; ");
+                             console.log ("*** Experimental1 eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because because csf <= 10");
+                             }else{
+                             console.log ("- hyperpredbgtest > 450 : "+HyperPredBGTest+" <= but no action required");
+                             }
+            } else if (HyperPredBGTest >= 1300 && bg >= 200 && now >= MealTimeStart && now <= MealTimeEnd && IOBpredBG >= 80){
+                              if (HyperPredBG > profile.UAM_hyperBG && glucose_status.delta >= 16 && glucose_status.delta_supersmooth >=16 && iob_data.iob < MaxCarbs && iob_data.iob >= (0.2*max_iob) ){
+                              insulinReq = exInsulin;
+                              insulinReqPCT = 1;
+                              maxBolusTT = insulinReq;
+                              console.log ("*** Experimental2 eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", exInsulin :"+exInsulin+"Because HyperPredBGTest >= 850 ");
+                              }else{
+                              console.log ("- hyperpredbgtest >= 1300 : "+HyperPredBGTest+" <= but no action required");
+                              }
             }
 
 

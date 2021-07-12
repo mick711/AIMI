@@ -96,7 +96,7 @@ my settins :
 no need to change settings, this version manage the target differently, the variation is more precise.
 sensitivituRation change too for better result in my test
 enjoy :)
-=2.8.2-AIMI-tsunami-0.6.3=================
+=2.8.2-AIMI-tsunami-0.6.4=================
 In this version :
 -target management was modified for better action in case of small activity
 -SMB management is different. i used a prediction on 4 hours to determine the started action. Two news variables will be use in the code EBG and REBG to determine insulinReq
@@ -105,3 +105,12 @@ during my test i didn't use TT. The best result come with a prebolus. If you use
 An other strategy, was to eat a small thing before the meal, that will send like a prebolus and the loop will manage the rest of the meal and post meal.
 Other point, i volontary disable the possibility to change some settings. The idea is to observe if this can be good for everyone. Like it's the first time, i'm not sure it will take your settings or the default. let me know :)
 Enjoy :)
+
+==================================
+AIMI-tsunami-0.6.5
+
+This version is about to perform the smb differently, with a better anticipation of the target management.
+Everage of carbs by day is not use, like in the 0.6.4, replace by eMaxIOB
+keep sugar with you in case :)
+Don't need to use TT. Prebolus is sweetable, but the script can manage the meal without. Up to you to explore this possibility :)
+enjoy :)
