@@ -470,10 +470,10 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
        hypo_target = Math.min(100,hypo_target);
        }*/
        var hypo_target = round(Math.min(200, min_bg + (EBG - min_bg)/3 ),0);
-           if (HypoPredBG <= 90 && hypo_target <= 100 && EBG > 80) {
+           if (HypoPredBG <= 90 && HypoPredBG >= 80 && hypo_target <= 100 && EBG < 110) {
             hypo_target += 20;
             console.log("target_bg from "+target_bg+" to "+hypo_target+" because HypoPredBG is lesser than 90 : "+HypoPredBG+"; ");
-            }else if (EBG <= 85) {
+            }else if (EBG <= 100 && HypoPredBG < 80) {
             hypo_target = 144;
             console.log("target_bg from "+target_bg+" to "+hypo_target+" because EBG is lesser than 85 : "+EBG+"; ");
             }else if (target_bg === hypo_target){
