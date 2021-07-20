@@ -832,10 +832,10 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             // truncate all BG predictions at 4 hours
             var curvepred = 48;
             if (HyperPredBGTest >= 450 && IOBpredBG > 85){
-            curvepred = 24;
+            curvepred = 36;
             //console.log("Exp. curvepred is on 2 hours");
             }else if (HyperPredBGTest >= 800 && IOBpredBG > 85){
-            curvepred = 18;
+            curvepred = 24;
             //console.log("Exp. curvepred is on 1 hour and 30 minutes");
             }else{
             curvepred = 48;
@@ -1343,7 +1343,7 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             var eMaxIOB = Math.min((EBG - target_bg)/profile.carb_ratio,profile.max_iob);
             var eCarbs = ((EBG * REBG)-target_bg)/profile.carb_ratio;
             var eInsulin = eCarbs/profile.carb_ratio;
-            if (HyperPredBGTest > 450 && target_bg <= 85 && glucose_status.delta > 0 && bg > 100 && now >= profile.Mealfactor_start && now <= profile.Mealfactor_end && IOBpredBG >= 80){
+            if (HyperPredBGTest > 450 && target_bg <= 85 && glucose_status.delta > 0 && bg > 100 && now >= profile.Mealfactor_start && now <= profile.Mealfactor_end && IOBpredBG >= 80 && naive_eventualBG > 10){
             insulinReq = eInsulin ;
             maxBolusTT = insulinReq;
             console.log("*** Experimental1 eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because hyperpredbgtest > 450");
