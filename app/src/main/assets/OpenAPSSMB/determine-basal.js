@@ -1343,9 +1343,9 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             var eMaxIOB = Math.min((EBG - target_bg)/profile.carb_ratio,profile.max_iob);
             var eCarbs = ((EBG * REBG)-target_bg)/profile.carb_ratio;
             var eInsulin = eCarbs/profile.carb_ratio;
-            if (HyperPredBGTest > 450 && target_bg <= 85 && glucose_status.delta > 0 && bg > 100 && now >= profile.Mealfactor_start && now <= profile.Mealfactor_end && IOBpredBG >= 80 && naive_eventualBG > 10){
+            if (HyperPredBGTest > 450 && target_bg <= 85 && glucose_status.delta > 0 && bg > 100 && now >= profile.Mealfactor_start && now <= profile.Mealfactor_end && IOBpredBG >= 80){
             insulinReq = eInsulin ;
-            maxBolusTT = insulinReq;
+            maxBolusTT = profile.UAM_boluscap;
             console.log("*** Experimental1 eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because hyperpredbgtest > 450");
             }else{
             console.log("- hyperpredbgtest > 450 : "+HyperPredBGTest+" <= but no action required");

@@ -311,7 +311,7 @@ public class DetermineBasalAdapterSMBJS {
         //mProfile.put("UAM_ISF1",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_ISF1,"3")));
         mProfile.put("enable_datasmoothing", sp.getBoolean(R.string.key_enable_datasmoothing, false));
 //MP: UAM_boluscap start
-        //mProfile.put("UAM_boluscap",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_boluscap,"2.5")));
+        mProfile.put("UAM_boluscap",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_boluscap,"2.5")));
 //        mProfile.put("boost_bolus",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_boost_bolus, "2.0")));
 //        mProfile.put("high_divisor",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_high_divisor, "2.0")));
 //        mProfile.put("boost_start",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_boost_start, "7.0")));
