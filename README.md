@@ -114,3 +114,13 @@ Everage of carbs by day is not use, like in the 0.6.4, replace by eMaxIOB
 keep sugar with you in case :)
 Don't need to use TT. Prebolus is sweetable, but the script can manage the meal without. Up to you to explore this possibility :)
 enjoy :)
+
+==================================
+AIMI-tsunami-0.6.6
+
+this version will use EBG60 to determine the size of the SMB instead of EBG, when HyperPredBGTest is greater than 600.
+BolusCap will be the value of maxbolus in this case, adjuts his value in the settings.
+EBG60 will be use to determine the target when EBG60<90 && EBG60<0 (this was really efficient yesterday during my activity)
+Since i pratice activity everyday i have to change a little bit my settings, insulinReq at 50% instead of 65% and W2modifier at 1.8 instead of 1.5
+Enjoy :-) and keep sugar in your pocket !
+

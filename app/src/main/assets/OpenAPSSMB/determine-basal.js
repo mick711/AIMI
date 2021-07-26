@@ -432,8 +432,13 @@ sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_dat
 //================= MT =====================================
 //experimental code for test
 var EBG = (0.02 * glucose_status.delta * glucose_status.delta) + (0.58 * glucose_status.long_avgdelta) + bg;
+var EBG180 = (0.02 * glucose_status.delta * glucose_status.delta) + (0.58 * glucose_status.long_avgdelta) + HyperPredBGTest2;
+var EBG120 = (0.02 * glucose_status.delta * glucose_status.delta) + (0.58 * glucose_status.long_avgdelta) + HyperPredBGTest3;
+var EBG60 = (0.02 * glucose_status.delta * glucose_status.delta) + (0.58 * glucose_status.long_avgdelta) + HyperPredBG;
 var REBG = EBG / min_bg;
+var REBG60 = EBG60 / min_bg;
 console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
+console.log("*** EBG180 : "+EBG180+" *** EBG120 : "+EBG120+" *** EBG60 : "+EBG60+" *** REBG60 : "+REBG60+" ; ");
 
 //Target management
 //var HypoPredBG = round( bg - (iob_data.iob * sens) ) + round( 60 / 5 * ( minDelta - round(( -iob_data.activity * sens * 5 ), 2)));
@@ -454,7 +459,16 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             console.log("target_bg from "+target_bg+" to "+hypo_target+" because HypoPredBG is lesser than 90 : "+HypoPredBG+"; ");
             }else if (EBG <= 100 && HypoPredBG < 80) {
             hypo_target = 144;
+            console.log("target_bg from "+target_bg+" to "+hypo_target+" because EBG is lesser than 100 and HypoPredBG < 80 : "+EBG+"; ");
+            }else if (EBG <= 85){
+            hypo_target = 144;
             console.log("target_bg from "+target_bg+" to "+hypo_target+" because EBG is lesser than 85 : "+EBG+"; ");
+            }else if (EBG60 <= 90 && EBG60 >0){
+            hypo_target = 110;
+            console.log("target_bg from "+target_bg+" to "+hypo_target+" because EBG60 is lesser than 90 : "+EBG60+"; ");
+            }else if (EBG60 <= 0){
+            hypo_target = 144;
+            console.log("target_bg from "+target_bg+" to "+hypo_target+" because EBG60 is lesser than 0 : "+EBG60+"; ");
             }else if (target_bg === hypo_target){
            console.log("target_bg unchanged: "+hypo_target+"; ");
            }else{
@@ -1341,14 +1355,14 @@ console.log("Experimental test, EBG : "+EBG+" REBG : "+REBG+" ; ");
             var insulinReqPCT = profile.UAM_InsulinReq/100;
             var maxBolusTT = maxBolus;
             var eMaxIOB = Math.min((EBG - target_bg)/profile.carb_ratio,profile.max_iob);
-            var eCarbs = ((EBG * REBG)-target_bg)/profile.carb_ratio;
+            var eCarbs = ((EBG60 * REBG60)-target_bg)/profile.carb_ratio;
             var eInsulin = eCarbs/profile.carb_ratio;
-            if (HyperPredBGTest > 450 && target_bg <= 85 && glucose_status.delta > 0 && bg > 100 && now >= profile.Mealfactor_start && now <= profile.Mealfactor_end && IOBpredBG >= 80){
+            if (HyperPredBGTest > 600 && target_bg <= 85 && glucose_status.delta > 0 && bg > 100 && now >= profile.Mealfactor_start && now <= profile.Mealfactor_end && IOBpredBG >= 80){
             insulinReq = eInsulin ;
             maxBolusTT = profile.UAM_boluscap;
             console.log("*** Experimental1 eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because hyperpredbgtest > 450");
             }else{
-            console.log("- hyperpredbgtest > 450 : "+HyperPredBGTest+" <= but no action required");
+            console.log("- hyperpredbgtest > 600 : "+HyperPredBGTest+" <= but no action required");
             }
 
 
