@@ -124,3 +124,10 @@ EBG60 will be use to determine the target when EBG60<90 && EBG60<0 (this was rea
 Since i pratice activity everyday i have to change a little bit my settings, insulinReq at 50% instead of 65% and W2modifier at 1.8 instead of 1.5
 Enjoy :-) and keep sugar in your pocket !
 
+=====================================
+AIMI Update 04/08/21:
+New variable Hyper_BG = 450 by default. The scale smb will start if at minimum the prediction > 450
+Since two version the code for smoothie data and autoISF is not used, or almost not used. I delete both.
+Enjoy, i got really good result :) 
+Style working on the plugin version :)
+

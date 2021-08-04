@@ -1472,9 +1472,9 @@
     <string name="UAM_ISF1_title">Reduce ISF phase 1</string>
     <string name="UAM_ISF1_summary">ISF will be divide if iob_scale value is true and delta greater than 8, or during a TT greater than 29 minutes</string>
     <string name="disable_Libre_smb_restrictions">Filtering active for every sensor, Go SMB!</string>
-    <string name="key_UAM_hyperBG" translatable="false">Value of HyperPredBG to send a bolus</string>
-    <string name="UAM_hyperBG_summary">Value of HyperPredBG to send a bolus value define in UAM Automated Bolus</string>
-    <string name="UAM_hyperBG_title">Value of HyperPredBG to send a bolus</string>
+    <string name="key_UAM_hyperBG" translatable="false">Prediction Value to start scale smb</string>
+    <string name="UAM_hyperBG_summary">Prediction Value to start scale smb</string>
+    <string name="UAM_hyperBG_title">Prediction Value to start scale smb</string>
     <string name="key_TotalCarbs" translatable="false">Average total carbs per day</string>
     <string name="UAM_TotalCarbs_summary">this number defines the average total number of carbs per day</string>
     <string name="UAM_TotalCarbs_title">this number defines the average total number of carbs per day</string>

@@ -111,7 +111,7 @@ function enable_smb(
 }
 
 // auto ISF === START
-function autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_data, sensitivityRatio)
+/*function autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_data, sensitivityRatio)
 {   // #### mod 7e: added switch fr autoISF ON/OFF
     if ( !profile.use_autoisf ) {
         console.error("autoISF disabled in Preferences");
@@ -132,23 +132,23 @@ function autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_d
             var avg05_weight = weightISF / target_bg;       // mod gz7b: provide access from AAPS
             var levelISF = 1 + dura05_weight*avg05_weight*(avg05-target_bg);
             var liftISF = Math.max(Math.min(maxISFReduction, levelISF), sensitivityRatio);  // corrected logic on 30.Jan.2021
-            /*console.error("autoISF reports", sens, "did not do it for", dura05,"m; go more aggressive by", round(levelISF,2));
+            *//*console.error("autoISF reports", sens, "did not do it for", dura05,"m; go more aggressive by", round(levelISF,2));
             if (maxISFReduction < levelISF) {
                 console.error("autoISF reduction", round(levelISF,2), "limited by autoisf_max", maxISFReduction);
-            }*/
+            }*//*
             sens = round(sens / liftISF, 1);
         } else {
             //MT : make the ISF lesser aggressive  when it's necessary
             //sens = round (profile.sens * 2,1);
             console.error("autoISF by-passed; avg. glucose", avg05, "below target", target_bg);
         }
-    } /*else if (meal_data.mealCOB>0) {
+    } *//*else if (meal_data.mealCOB>0) {
         console.error("autoISF by-passed; mealCOB of "+round(meal_data.mealCOB,1));
-    } */else {
+    } *//*else {
         console.error("autoISF by-passed; BG is only "+dura05+"m at level "+avg05);
     }
     return sens;
-}
+}*/
 // auto ISF === END
 
 var determine_basal = function determine_basal(glucose_status, currenttemp, iob_data, profile, autosens_data, meal_data, tempBasalFunctions, microBolusAllowed, reservoir_data, currentTime, isSaveCgmSource) {
@@ -370,7 +370,7 @@ var scale_max = profile.scale_max/100;
             //console.log("Scale_ISF_ID: "+scale_ISF_ID);
             console.log("Scale_50 adjusted from "+profile.scale_50+" to "+round (profile.scale_50/(bg/target_bg), 2)+"; scale factor: "+bg+"/"+target_bg+" = "+round((bg/target_bg), 2)+";");
             console.log("W1: Scale ISF from "+profile_sens+" to "+sens);
-    }else if (iob_data.iob > iob_scale && now >= MealTimeStart && now <= MealTimeEnd && glucose_status.delta >= 4 && bg >= 100) { //MP: Second wave assist outside UAM Mode, active only during user-defined hours
+    }/*else if (iob_data.iob > iob_scale && now >= MealTimeStart && now <= MealTimeEnd && glucose_status.delta >= 4 && bg >= 100) { //MP: Second wave assist outside UAM Mode, active only during user-defined hours
             //scale_ISF_ID = 1;
             //console.log("Scale_ISF_ID: "+scale_ISF_ID);
             if (profile.enable_datasmoothing) { //MP if data smoothing is enabled
@@ -394,9 +394,9 @@ var scale_max = profile.scale_max/100;
             }
             sens = round (sens,1);
             console.log("W2: Scale ISF from "+profile_sens+" to "+sens);
-    }
-    else if (bg>=110 && glucose_status.delta >= 8 && now >= MealTimeStart && now <= MealTimeEnd ){
-              sens -= glucose_status.delta;
+    }*/
+    else if (bg>=110 && glucose_status.delta >= 5 && now >= MealTimeStart && now <= MealTimeEnd ){
+              sens -= (glucose_status.delta * glucose_status.delta);
               sens = round (sens,1);
               csf = (sens / profile.carb_ratio) - (glucose_status.delta / 10);
               csf = round (csf,1);
@@ -428,7 +428,7 @@ var scale_max = profile.scale_max/100;
 //############################# MP
 //### ISF SCALING CODE END ### MP
 //############################# MP
-sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_data, sensitivityRatio); //autoISF
+//sens = autoISF(sens, target_bg, profile, glucose_status, meal_data, autosens_data, sensitivityRatio); //autoISF
 //================= MT =====================================
 //experimental code for test
 var EBG = (0.02 * glucose_status.delta * glucose_status.delta) + (0.58 * glucose_status.long_avgdelta) + bg;
@@ -1357,12 +1357,13 @@ console.log("*** EBG180 : "+EBG180+" *** EBG120 : "+EBG120+" *** EBG60 : "+EBG60
             var eMaxIOB = Math.min((EBG - target_bg)/profile.carb_ratio,profile.max_iob);
             var eCarbs = ((EBG60 * REBG60)-target_bg)/profile.carb_ratio;
             var eInsulin = eCarbs/profile.carb_ratio;
-            if (HyperPredBGTest > 600 && target_bg <= 85 && glucose_status.delta > 0 && bg > 100 && now >= profile.Mealfactor_start && now <= profile.Mealfactor_end && IOBpredBG >= 80){
+            var iTime = round(( new Date(systemTime).getTime() - iob_data.lastBolusTime ) / 60000,1);
+            if (HyperPredBGTest >= profile.UAM_hyperBG && target_bg <= 85 && glucose_status.delta > 0 && bg > 110 && iTime >= 9 && now >= profile.Mealfactor_start && now <= profile.Mealfactor_end && IOBpredBG >= 80){
             insulinReq = eInsulin ;
             maxBolusTT = profile.UAM_boluscap;
-            console.log("*** Experimental1 eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because hyperpredbgtest > 450");
+            console.log("*** Experimental eMaxIOB : "+eMaxIOB+", eCarbs :"+eCarbs+", eInsulin :"+eInsulin+"Because hyperpredbgtest > 700 and iTime ("+iTime+") >= 9");
             }else{
-            console.log("- hyperpredbgtest > 600 : "+HyperPredBGTest+" <= but no action required");
+            console.log("- hyperpredbgtest > 450 : "+HyperPredBGTest+" <= but no action required");
             }
 
 

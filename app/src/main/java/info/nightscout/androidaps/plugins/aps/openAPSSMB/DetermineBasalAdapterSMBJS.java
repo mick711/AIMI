@@ -294,10 +294,10 @@ public class DetermineBasalAdapterSMBJS {
         mProfile.put("autosens_max", SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_autosens_max, "1.2")));
         // autoISF === START
         // mod 7e: can I add use autoisf here?
-        mProfile.put("use_autoisf", sp.getBoolean(R.string.key_openapsama_useautoisf, false));
+        //mProfile.put("use_autoisf", sp.getBoolean(R.string.key_openapsama_useautoisf, false));
         // mod 7d: can I add autosens_min here?
-        mProfile.put("autoisf_max",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_autoisf_max, "1.2")));
-        mProfile.put("autoisf_hourlychange",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_autoisf_hourlychange, "0.2")));
+        //mProfile.put("autoisf_max",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_autoisf_max, "1.2")));
+        //mProfile.put("autoisf_hourlychange",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_autoisf_hourlychange, "0.2")));
         // autoISF === END
         //MT : Prebolus UAM
         mProfile.put("UAM_PBolus1", SafeParse.stringToDouble(sp.getString(R.string.key_UAM_PBolus1,"2")));
@@ -309,9 +309,10 @@ public class DetermineBasalAdapterSMBJS {
         mProfile.put("W2_modifier",SafeParse.stringToDouble(sp.getString(R.string.key_W2_modifier,"1.5")));
         //mProfile.put("UAM_ISF2",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_ISF2,"2")));
         //mProfile.put("UAM_ISF1",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_ISF1,"3")));
-        mProfile.put("enable_datasmoothing", sp.getBoolean(R.string.key_enable_datasmoothing, false));
+        //mProfile.put("enable_datasmoothing", sp.getBoolean(R.string.key_enable_datasmoothing, false));
 //MP: UAM_boluscap start
         mProfile.put("UAM_boluscap",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_boluscap,"2.5")));
+
 //        mProfile.put("boost_bolus",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_boost_bolus, "2.0")));
 //        mProfile.put("high_divisor",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_high_divisor, "2.0")));
 //        mProfile.put("boost_start",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_boost_start, "7.0")));
@@ -320,7 +321,7 @@ public class DetermineBasalAdapterSMBJS {
         mProfile.put("Mealfactor_end",  SafeParse.stringToDouble(sp.getString(R.string.key_Mealfactor_end, "23.0")));
         mProfile.put("UAM_eventualBG",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_eventualBG,"155")));
         mProfile.put("W2_IOB_threshold",SafeParse.stringToDouble(sp.getString(R.string.key_w2_iob_threshold,"20")));
-        //mProfile.put("UAM_hyperBG",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_hyperBG,"220")));
+        mProfile.put("UAM_hyperBG",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_hyperBG,"220")));
         //mProfile.put("TotalCarbs",SafeParse.stringToDouble(sp.getString(R.string.key_TotalCarbs,"150")));
         if (profileFunction.getUnits().equals(Constants.MMOL)) {
             mProfile.put("out_units", "mmol/L");
@@ -370,11 +371,11 @@ public class DetermineBasalAdapterSMBJS {
         mGlucoseStatus.put("date", glucoseStatus.date);
         // autoISF === START
         // mod 7: append 2 variables for 5% range
-        mGlucoseStatus.put("autoISF_duration", glucoseStatus.autoISF_duration);
-        mGlucoseStatus.put("autoISF_average", glucoseStatus.autoISF_average);
+        //mGlucoseStatus.put("autoISF_duration", glucoseStatus.autoISF_duration);
+        //mGlucoseStatus.put("autoISF_average", glucoseStatus.autoISF_average);
         // autoISF === END
         // MP data smoothing START
-        mGlucoseStatus.put("o1_weight", glucoseStatus.o1_weight);
+        /*mGlucoseStatus.put("o1_weight", glucoseStatus.o1_weight);
         mGlucoseStatus.put("o1_a", glucoseStatus.o1_a);
         mGlucoseStatus.put("o2_a", glucoseStatus.o2_a);
         mGlucoseStatus.put("o2_b", glucoseStatus.o2_b);
@@ -386,7 +387,7 @@ public class DetermineBasalAdapterSMBJS {
         mGlucoseStatus.put("o2/trend_now", glucoseStatus.o2_smoothedtrend_now);
         mGlucoseStatus.put("bg_supersmooth_5m", glucoseStatus.bg_supersmooth_5m);
         mGlucoseStatus.put("bg_supersmooth_now", glucoseStatus.bg_supersmooth_now);
-        mGlucoseStatus.put("delta_supersmooth", glucoseStatus.delta_supersmooth);
+        mGlucoseStatus.put("delta_supersmooth", glucoseStatus.delta_supersmooth);*/
         // MP data smoothing END
         mMealData = new JSONObject();
         mMealData.put("carbs", mealData.carbs);
