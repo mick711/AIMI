@@ -128,6 +128,13 @@ Enjoy :-) and keep sugar in your pocket !
 AIMI Update 04/08/21:
 New variable Hyper_BG = 450 by default. The scale smb will start if at minimum the prediction > 450
 Since two version the code for smoothie data and autoISF is not used, or almost not used. I delete both.
-Enjoy, i got really good result :) 
+Enjoy, i got really good result :)
 Style working on the plugin version :)
 
+======================================
+AIMI V2
+We talk a lot about safety, without really find a good way to avoid the 2% of hypoglycémia with overdosing situation.
+For this version i contain the AIMI SMB code to a TT > 29 minutes, target between 80 and 85. prebolus can be send or not.
+I test it with 120 minutes duration and its was managed fine.
+This update is the way to prepare AIMI for the dev version, an other project, with AIMI like a pluggin, with the idea, than a prebolus will define the meal start for the next three hours, the smb size will come from AIMI not aaps standard.
+Everyone is agree to say prebolus is necessary, out of the three hours after the prebolus, the aaps will works witrh target & ISF management to adjust the profile.

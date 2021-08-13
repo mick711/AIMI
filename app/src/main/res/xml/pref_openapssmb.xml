@@ -45,7 +45,7 @@
             validate:floatmaxNumber="300"
             validate:floatminNumber="30"
             validate:testType="floatNumericRange" />-->
-        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+        <!--<info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="155"
             android:enabled="true"
             android:dialogMessage="@string/UAM_eventualBG_summary"
@@ -64,7 +64,7 @@
             android:title="@string/UAM_hyperBG_title"
             validate:floatmaxNumber="1000"
             validate:floatminNumber="350"
-            validate:testType="floatNumericRange" />
+            validate:testType="floatNumericRange" />-->
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="70"
             android:enabled="true"
@@ -95,7 +95,7 @@
             validate:floatmaxNumber="70"
             validate:floatminNumber="10"
             validate:testType="floatNumericRange" />
-        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+        <!--<info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="1.5"
             android:enabled="true"
             android:dialogMessage="@string/W2_modifier_summary"
@@ -104,8 +104,8 @@
             android:title="@string/W2_modifier_title"
             validate:floatmaxNumber="3"
             validate:floatminNumber="1"
-            validate:testType="floatNumericRange" />
-        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+            validate:testType="floatNumericRange" />-->
+        <!--<info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="20"
             android:enabled="true"
             android:dialogMessage="@string/w2_iob_threshold_summary"
@@ -114,7 +114,7 @@
             android:title="@string/w2_iob_threshold_title"
             validate:floatmaxNumber="100"
             validate:floatminNumber="0"
-            validate:testType="floatNumericRange" />
+            validate:testType="floatNumericRange" />-->
 
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="7"

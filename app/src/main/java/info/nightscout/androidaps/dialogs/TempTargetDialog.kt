@@ -30,6 +30,8 @@ import info.nightscout.androidaps.utils.DefaultValueHelper
 import info.nightscout.androidaps.utils.HtmlHelper
 import info.nightscout.androidaps.utils.alertDialogs.OKDialog
 import info.nightscout.androidaps.utils.resources.ResourceHelper
+import kotlinx.android.synthetic.main.local_insight_status_item.view.*
+import kotlinx.android.synthetic.main.localprofile_fragment.*
 import java.text.DecimalFormat
 import java.util.*
 import javax.inject.Inject
@@ -160,8 +162,8 @@ class TempTargetDialog : DialogFragmentWithDate() {
             }
 
             R.id.eating_soon_medium -> {
-                binding.temptarget.value = 80.0
-                binding.duration.value = 110.0
+                binding.temptarget.value = 85.0
+                binding.duration.value = 120.0
                 binding.reason.setSelection(reasonList.indexOf(resourceHelper.gs(R.string.eatingsoon_medium)))
             }
 
