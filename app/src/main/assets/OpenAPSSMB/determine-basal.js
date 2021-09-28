@@ -296,6 +296,20 @@ var scale_ISF_ID; //MP: identifier variable. Each of the different ISF scaling c
 var scale_min = profile.scale_min/100;
 var scale_max = profile.scale_max/100;
 
+var tdd7 = meal_data.TDDAIMI7;
+var tdd_pump_now = meal_data.TDDPUMP;
+console.log("TDDpumpnow = "+tdd_pump_now+" ; ");
+var tdd_pump = ( tdd_pump_now / (now / 24));
+console.error("Pump extrapolated TDD = "+tdd_pump+"; ");
+if (tdd7 < 20){
+    tdd7 = meal_data.TDDAIMI1;
+    console.error("tdd7 using previous day's value "+tdd7+"; ");
+}
+else{
+    console.error("tdd7 using 7-day average "+tdd7+"; ");
+}
+var TDD = (tdd7 * 0.5) + (tdd_pump * 0.5);
+console.log("TDD 7 ="+tdd7+", TDD Pump ="+tdd_pump+" and TDD = "+TDD+";");
 //scale_ISF_ID codes:
 // 0 = UAM mode scaling
 // 1 = second wave scaling
@@ -1262,17 +1276,20 @@ console.log("*** EBG180 : "+EBG180+" *** EBG120 : "+EBG120+" *** EBG60 : "+EBG60
             } else if ( iob_data.iob > mealInsulinReq && iob_data.iob > 0 ) {
                 console.error("IOB",iob_data.iob,"> COB",meal_data.mealCOB+"; mealInsulinReq =",mealInsulinReq);
                 if (profile.maxUAMSMBBasalMinutes) {
-                    console.error("profile.maxUAMSMBBasalMinutes:",profile.maxUAMSMBBasalMinutes,"basal:",basal);
-                    maxBolus = round( basal * profile.maxUAMSMBBasalMinutes / 60 ,1);
-
-                }else {
-                    console.error("profile.maxUAMSMBBasalMinutes undefined: defaulting to 30m");
-                    maxBolus = round( basal * 30 / 60 ,1);
+                        console.error("profile.maxUAMSMBBasalMinutes:",profile.maxUAMSMBBasalMinutes,"basal:",basal);
+                        if (HyperPredBGTest > 450 && bg > 100 ){
+                        maxBolus = round(basal * 200 / 60 ,1);
+                        }else{
+                        maxBolus = round( basal * profile.maxUAMSMBBasalMinutes / 60 ,1);
+                        }
+                    } else {
+                        console.error("profile.maxUAMSMBBasalMinutes undefined: defaulting to 30m");
+                        maxBolus = round( basal * 30 / 60 ,1);
+                    }
+                } else {
+                    console.error("profile.maxSMBBasalMinutes:",profile.maxSMBBasalMinutes,"basal:",basal);
+                    maxBolus = round( basal * profile.maxSMBBasalMinutes / 60 ,1);
                 }
-            } else {
-                console.error("profile.maxSMBBasalMinutes:",profile.maxSMBBasalMinutes,"basal:",basal);
-                maxBolus = round( basal * profile.maxSMBBasalMinutes / 60 ,1);
-            }
             // bolus 1/2 the insulinReq, up to maxBolus, rounding down to nearest bolus increment
             /*var roundSMBTo = 1 / profile.bolus_increment;
             var insulinReqPCT = profile.UAM_InsulinReq/100;
@@ -1295,24 +1312,19 @@ console.log("*** EBG180 : "+EBG180+" *** EBG120 : "+EBG120+" *** EBG60 : "+EBG60
 
             var insulinReqPCT = profile.UAM_InsulinReq/100;
             var maxBolusTT = maxBolus;
-            var EBX = Math.min(EBG,EBG60);
+            /*var EBX = Math.min(EBG,EBG60);
             var REBX = Math.min(REBG60,REBG);
             var eCarbs = (((EBX * REBX)-target_bg)/profile.carb_ratio);
-            var eInsulin = eCarbs/profile.carb_ratio;
+            var eInsulin = eCarbs/profile.carb_ratio;*/
             var roundSMBTo = 1 / profile.bolus_increment;
             //var iTime = round(( new Date(systemTime).getTime() - iob_data.lastBolusTime ) / 60000,1);
             //if (HyperPredBGTest >= 650 && HyperPredBGTest <=1100 && glucose_status.delta > 0 && EBX > 100 && now >= tae_start && now <= tae_end && IOBpredBG > 70){
-            console.log("***EBX :"+EBX+";");
-            if (profile.temptargetSet && target_bg >= 80 && target_bg <= 85 && profile.temptarget_duration >= 29 && glucose_status.delta > 0){
-            insulinReq = eInsulin ;
+            //console.log("***EBX :"+EBX+";");
+            if (HyperPredBGTest > 450 && bg > 100){
+            //insulinReq = eInsulin ;
             insulinReqPCT = 1;
-            maxBolusTT = profile.UAM_boluscap;
-            console.log("*** Experimental scale smb ok");
-            }else if (HyperPredBGTest >= 900 && EBG >= 180 && now >= profile.Mealfactor_start && now <= profile.Mealfactor_end && iob_data.iob < max_iob && iTime >= 9 && IOBpredBG > 39){
-            insulinReq = eInsulin;
-            console.log("*** Experimental scale smb ok");
-            }else{
-            console.log("- hyperpredbgtest > 450 : "+HyperPredBGTest+" <= but no action required");
+           // maxBolusTT = profile.UAM_boluscap;
+            //console.log("*** Experimental scale smb ok");
             }
 
 
