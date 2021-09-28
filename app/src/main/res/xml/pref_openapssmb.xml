@@ -65,7 +65,7 @@
             validate:floatmaxNumber="1000"
             validate:floatminNumber="350"
             validate:testType="floatNumericRange" />-->
-        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+        <!--<info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="70"
             android:enabled="true"
             android:dialogMessage="@string/scale_min_summary"
@@ -94,7 +94,7 @@
             android:title="@string/scale_max_title"
             validate:floatmaxNumber="70"
             validate:floatminNumber="10"
-            validate:testType="floatNumericRange" />
+            validate:testType="floatNumericRange" />-->
         <!--<info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="1.5"
             android:enabled="true"
@@ -116,7 +116,7 @@
             validate:floatminNumber="0"
             validate:testType="floatNumericRange" />-->
 
-        <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
+        <!--<info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="7"
             android:dialogMessage="@string/Mealfactor_start_summary"
             android:digits="0123456789.,"
@@ -152,7 +152,7 @@
             android:title="@string/UAM_PBolus1_title"
             validate:floatmaxNumber="5"
             validate:floatminNumber="0"
-            validate:testType="floatNumericRange" />
+            validate:testType="floatNumericRange" />-->
         <info.nightscout.androidaps.utils.textValidator.ValidatingEditTextPreference
             android:defaultValue="2.5"
             android:dialogMessage="@string/UAM_boluscap_summary"

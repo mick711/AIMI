@@ -320,9 +320,9 @@ public class DetermineBasalAdapterSMBJS {
         mProfile.put("UAM_PBolus1", SafeParse.stringToDouble(sp.getString(R.string.key_UAM_PBolus1,"2")));
         //mProfile.put("UAM_PBolus2",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_PBolus2,"1")));
         mProfile.put("UAM_InsulinReq",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_InsulinReq,"65")));
-        mProfile.put("scale_min",SafeParse.stringToDouble(sp.getString(R.string.key_scale_min,"70")));
+        /*mProfile.put("scale_min",SafeParse.stringToDouble(sp.getString(R.string.key_scale_min,"70")));
         mProfile.put("scale_max",SafeParse.stringToDouble(sp.getString(R.string.key_scale_max,"20")));
-        mProfile.put("scale_50",SafeParse.stringToDouble(sp.getString(R.string.key_scale_50,"2")));
+        mProfile.put("scale_50",SafeParse.stringToDouble(sp.getString(R.string.key_scale_50,"2")));*/
         //mProfile.put("W2_modifier",SafeParse.stringToDouble(sp.getString(R.string.key_W2_modifier,"1.5")));
         //mProfile.put("UAM_ISF2",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_ISF2,"2")));
         //mProfile.put("UAM_ISF1",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_ISF1,"3")));
@@ -334,8 +334,8 @@ public class DetermineBasalAdapterSMBJS {
 //        mProfile.put("high_divisor",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_high_divisor, "2.0")));
 //        mProfile.put("boost_start",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_boost_start, "7.0")));
 //        mProfile.put("boost_end",  SafeParse.stringToDouble(sp.getString(R.string.key_openapsama_boost_end, "22.0")));
-        mProfile.put("Mealfactor_start",  SafeParse.stringToDouble(sp.getString(R.string.key_Mealfactor_start, "7.0")));
-        mProfile.put("Mealfactor_end",  SafeParse.stringToDouble(sp.getString(R.string.key_Mealfactor_end, "23.0")));
+        //mProfile.put("Mealfactor_start",  SafeParse.stringToDouble(sp.getString(R.string.key_Mealfactor_start, "7.0")));
+        //mProfile.put("Mealfactor_end",  SafeParse.stringToDouble(sp.getString(R.string.key_Mealfactor_end, "23.0")));
         //mProfile.put("UAM_eventualBG",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_eventualBG,"155")));
         //mProfile.put("W2_IOB_threshold",SafeParse.stringToDouble(sp.getString(R.string.key_w2_iob_threshold,"20")));
         //mProfile.put("UAM_hyperBG",SafeParse.stringToDouble(sp.getString(R.string.key_UAM_hyperBG,"220")));
